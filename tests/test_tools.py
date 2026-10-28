@@ -1,10 +1,10 @@
 import json
-
 import requests
 from requests.adapters import BaseAdapter
 from urllib3 import HTTPResponse
-
 from agent.tools.http import make_session
+from pathlib import Path
+from agent.tools import opentargets
 
 FAKE_URL = "https://fake.test/graphql"
 
@@ -49,8 +49,21 @@ def test_graphql_error_response_is_not_cached():
     assert not second.from_cache
     assert adapter.calls == 2
 
-
 def test_graphql_success_response_is_cached():
     second, adapter = _post_twice({"data": {"meta": {"apiVersion": {"x": "26"}}}})
     assert second.from_cache
     assert adapter.calls == 1
+
+FIXTURES = Path(__file__).parent / "fixtures"
+
+def load_fixture(name: str) -> dict:
+    return json.loads((FIXTURES / name).read_text())
+
+def test_search_disease_returns_atopic_eczema_first(monkeypatch):
+    fixture = load_fixture("ot_search_atopic_dermatitis.json")
+    monkeypatch.setattr(opentargets, "graphql", lambda query, variables: fixture)
+
+    hits = opentargets.search_disease("atopic dermatitis")
+
+    assert hits[0].id == "MONDO_0004980"
+    assert len(hits) == 5

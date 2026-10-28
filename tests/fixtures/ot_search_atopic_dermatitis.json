@@ -1,0 +1,36 @@
+{
+  "search": {
+    "hits": [
+      {
+        "id": "MONDO_0004980",
+        "name": "atopic eczema",
+        "entity": "disease",
+        "description": "A common chronic pruritic inflammatory skin disease with a strong genetic component. Onset typically occurs during the first 2 years of life."
+      },
+      {
+        "id": "MONDO_0002406",
+        "name": "dermatitis",
+        "entity": "disease",
+        "description": "An inflammatory process affecting the skin. Signs include red rash, itching, and blister formation. Representative examples are contact dermatitis, atopic dermatitis, and seborrheic dermatitis."
+      },
+      {
+        "id": "MONDO_0054697",
+        "name": "immunodeficiency 11b with atopic dermatitis",
+        "entity": "disease",
+        "description": null
+      },
+      {
+        "id": "MONDO_0005202",
+        "name": "atopic IgE-mediated allergic disorder",
+        "entity": "disease",
+        "description": "A genetic predisposition to form IgE antibodies in response to exposure to allergens and therefore, for the development of immediate (type I) hypersensitivity and atopic conditions, such as allergic rhinitis; bronchial asthma, atopic dermatitis, and food allergy. Mutations of specific alleles on the long arm of chromosome 5 have been associated with higher levels of IL-4 and IgE and are known as IL-4 promoter polymorphisms."
+      },
+      {
+        "id": "MONDO_0043233",
+        "name": "exfoliative dermatitis",
+        "entity": "disease",
+        "description": "The widespread involvement of the skin by a scaly, erythematous dermatitis occurring either as a secondary or reactive process to an underlying cutaneous disorder (e.g., atopic dermatitis, psoriasis, etc.), or as a primary or idiopathic disease. It is often associated with the loss of hair and nails, hyperkeratosis of the palms and soles, and pruritus. (From Dorland, 27th ed)"
+      }
+    ]
+  }
+}
