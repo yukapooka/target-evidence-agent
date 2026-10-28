@@ -1,0 +1,21 @@
+# Private
+.env
+CLAUDE.local.md
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Caches and run outputs
+*.sqlite
+.cache/
+traces/*
+!traces/example.jsonl
+runs/*
+!runs/example.json
+
+
