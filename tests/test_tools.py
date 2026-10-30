@@ -21,7 +21,7 @@ import requests
 from requests.adapters import BaseAdapter
 from urllib3 import HTTPResponse
 
-from agent.tools import expression, opentargets
+from agent.tools import expression, opentargets, pubmed
 from agent.tools.http import make_session
 
 
@@ -171,3 +171,33 @@ def test_skin_expression(monkeypatch):
         assert tissue.median_tpm > 0
     assert result.skin_rank == 28
     assert result.gtex_tissue_count == 51
+
+# --- Step 7: PubMed ---
+# PubMed uses get_json/get_text (not graphql), so those are faked; the fakes receive (url, params).
+
+# Fake: get_json() returns the saved esearch answer. Check: 5 PMIDs, including the dupilumab trial.
+def test_search_pubmed(monkeypatch):
+    fixture = load_fixture("pubmed_esearch_il4r_ad.json")
+    monkeypatch.setattr(pubmed, "get_json", lambda url, params: fixture)
+
+    search_result = pubmed.search_pubmed("IL4R atopic dermatitis", max_results=5)
+
+    assert len(search_result) == 5
+    assert "26454361" in search_result
+
+# Fake: get_json() returns the saved esummary answer. Check: real PMID True, fake PMID False.
+def test_check_pmids(monkeypatch):
+    fixture = load_fixture("pubmed_esummary_real_and_fake.json")
+    monkeypatch.setattr(pubmed, "get_json", lambda url, params: fixture)
+    check_result = pubmed.check_pmids(["26454361","99999999999"])
+    assert check_result == {"26454361": True, "99999999999": False}
+
+# Fake: get_text() returns the saved XML (2 papers). Check: 2 articles; labelled sections are kept.
+def test_fetch_abstracts(monkeypatch):
+    xml_text = (FIXTURES / "pubmed_efetch_two_articles.xml").read_text()
+    monkeypatch.setattr(pubmed, "get_text", lambda url, params: xml_text)
+    
+    articles = pubmed.fetch_abstracts(["26454361", "31505066"])
+    assert len(articles) == 2
+    assert "BACKGROUND:" in articles[0].abstract
+    assert "FINDINGS:" in articles[0].abstract

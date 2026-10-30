@@ -21,6 +21,7 @@ from pydantic import BaseModel
 from agent.tools.http import graphql
 
 # --- Step 6: skin expression ---
+# GTEx skin TPM for one target, and where skin ranks among all 51 GTEx tissues (other data sources are ignored).
 # In:  get_skin_expression("ENSG00000077238")   (IL4R)
 # Out: SkinExpression(ensembl_id="ENSG00000077238", symbol="IL4R",
 #                     skin_tissues=[TissueTPM(tissue="Skin - Sun Exposed (Lower leg)", uberon_id="UBERON_0004264", median_tpm=27.316),

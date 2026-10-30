@@ -18,6 +18,8 @@ Rationale:
     - Wrappers call only these helpers, so caching, timeouts and error handling live in one place.
 """
 
+import os
+import time
 from datetime import timedelta
 
 import requests_cache
@@ -68,6 +70,10 @@ session = make_session()
 OT_GRAPHQL_URL = "https://api.platform.opentargets.org/api/v4/graphql"
 TIMEOUT = 30  # seconds; requests has no default timeout, so a stalled server would hang forever
 
+# NCBI allows 3 requests/s without an API key and 10/s with one. get_json/get_text are only used for NCBI,
+# so they pause this long after each real (uncached) request. Cached answers return instantly.
+NCBI_DELAY = 0.11 if os.getenv("NCBI_API_KEY") else 0.34
+
 
 # --- Step 1c: request helpers (the only functions the wrappers call) ---
 
@@ -96,6 +102,8 @@ def get_json(url: str, params: dict) -> dict:
     """GET a JSON endpoint (used for PubMed esearch and esummary)."""
     response = session.get(url, params=params, timeout=TIMEOUT)
     response.raise_for_status()
+    if not response.from_cache:
+        time.sleep(NCBI_DELAY)
     return response.json()
 
 
@@ -107,4 +115,6 @@ def get_text(url: str, params: dict) -> str:
     """GET a text endpoint (used for PubMed efetch, which returns XML)."""
     response = session.get(url, params=params, timeout=TIMEOUT)
     response.raise_for_status()
+    if not response.from_cache:
+        time.sleep(NCBI_DELAY)
     return response.text

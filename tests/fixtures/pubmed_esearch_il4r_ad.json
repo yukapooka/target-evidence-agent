@@ -1,0 +1,29 @@
+{
+  "header": {
+    "type": "esearch",
+    "version": "0.3"
+  },
+  "esearchresult": {
+    "count": "111",
+    "retmax": "5",
+    "retstart": "0",
+    "idlist": [
+      "38186219",
+      "39080841",
+      "33483337",
+      "31505066",
+      "26454361"
+    ],
+    "translationset": [
+      {
+        "from": "IL4R",
+        "to": "\"il4r protein, human\"[Supplementary Concept] OR \"il4r protein, human\"[All Fields] OR \"il4r\"[All Fields]"
+      },
+      {
+        "from": "atopic dermatitis",
+        "to": "\"dermatitis, atopic\"[MeSH Terms] OR (\"dermatitis\"[All Fields] AND \"atopic\"[All Fields]) OR \"atopic dermatitis\"[All Fields] OR (\"atopic\"[All Fields] AND \"dermatitis\"[All Fields])"
+      }
+    ],
+    "querytranslation": "(\"il4r protein human\"[Supplementary Concept] OR \"il4r protein human\"[All Fields] OR \"il4r\"[All Fields]) AND (\"dermatitis, atopic\"[MeSH Terms] OR (\"dermatitis\"[All Fields] AND \"atopic\"[All Fields]) OR \"atopic dermatitis\"[All Fields] OR (\"atopic\"[All Fields] AND \"dermatitis\"[All Fields]))"
+  }
+}

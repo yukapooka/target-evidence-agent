@@ -1,0 +1,212 @@
+{
+  "header": {
+    "type": "esummary",
+    "version": "0.3"
+  },
+  "result": {
+    "uids": [
+      "26454361",
+      "99999999999"
+    ],
+    "26454361": {
+      "uid": "26454361",
+      "pubdate": "2016 Jan 2",
+      "epubdate": "2015 Oct 8",
+      "source": "Lancet",
+      "authors": [
+        {
+          "name": "Tha\u00e7i D",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Simpson EL",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Beck LA",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Bieber T",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Blauvelt A",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Papp K",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Soong W",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Worm M",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Szepietowski JC",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Sofen H",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Kawashima M",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Wu R",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Weinstein SP",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Graham NM",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Pirozzi G",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Teper A",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Sutherland ER",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Mastey V",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Stahl N",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Yancopoulos GD",
+          "authtype": "Author",
+          "clusterid": ""
+        },
+        {
+          "name": "Ardeleanu M",
+          "authtype": "Author",
+          "clusterid": ""
+        }
+      ],
+      "lastauthor": "Ardeleanu M",
+      "title": "Efficacy and safety of dupilumab in adults with moderate-to-severe atopic dermatitis inadequately controlled by topical treatments: a randomised, placebo-controlled, dose-ranging phase 2b trial.",
+      "sorttitle": "efficacy and safety of dupilumab in adults with moderate to severe atopic dermatitis inadequately controlled by topical treatments a randomised placebo controlled dose ranging phase 2b trial",
+      "volume": "387",
+      "issue": "10013",
+      "pages": "40-52",
+      "lang": [
+        "eng"
+      ],
+      "nlmuniqueid": "2985213R",
+      "issn": "0140-6736",
+      "essn": "1474-547X",
+      "pubtype": [
+        "Clinical Trial, Phase II",
+        "Journal Article",
+        "Randomized Controlled Trial",
+        "Research Support, Non-U.S. Gov't"
+      ],
+      "recordstatus": "PubMed - indexed for MEDLINE",
+      "pubstatus": "256",
+      "articleids": [
+        {
+          "idtype": "pubmed",
+          "idtypen": 1,
+          "value": "26454361"
+        },
+        {
+          "idtype": "doi",
+          "idtypen": 3,
+          "value": "10.1016/S0140-6736(15)00388-8"
+        },
+        {
+          "idtype": "pii",
+          "idtypen": 4,
+          "value": "S0140-6736(15)00388-8"
+        }
+      ],
+      "history": [
+        {
+          "pubstatus": "entrez",
+          "date": "2015/10/12 06:00"
+        },
+        {
+          "pubstatus": "pubmed",
+          "date": "2015/10/12 06:00"
+        },
+        {
+          "pubstatus": "medline",
+          "date": "2016/02/02 06:00"
+        }
+      ],
+      "references": [
+        {
+          "refsource": "Lancet. 2016 Jan 2;387(10013):4-5. doi: 10.1016/S0140-6736(15)00389-X.",
+          "reftype": "Comment in",
+          "pmid": 26454359,
+          "note": ""
+        }
+      ],
+      "attributes": [
+        "Has Abstract"
+      ],
+      "pmcrefcount": "",
+      "fulljournalname": "Lancet (London, England)",
+      "elocationid": "doi: 10.1016/S0140-6736(15)00388-8",
+      "doctype": "citation",
+      "srccontriblist": [],
+      "booktitle": "",
+      "medium": "",
+      "edition": "",
+      "publisherlocation": "",
+      "publishername": "",
+      "srcdate": "",
+      "reportnumber": "",
+      "availablefromurl": "",
+      "locationlabel": "",
+      "doccontriblist": [],
+      "docdate": "",
+      "bookname": "",
+      "chapter": "",
+      "sortpubdate": "2016/01/02 00:00",
+      "sortfirstauthor": "Tha\u00e7i D",
+      "vernaculartitle": ""
+    },
+    "99999999999": {
+      "uid": "99999999999",
+      "error": "cannot get document summary"
+    }
+  }
+}
