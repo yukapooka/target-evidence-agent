@@ -1,0 +1,1681 @@
+{
+  "target": {
+    "drugAndClinicalCandidates": {
+      "rows": [
+        {
+          "maxClinicalStage": "PHASE_4",
+          "drug": {
+            "id": "CHEMBL1743035",
+            "name": "LEBRIKIZUMAB",
+            "drugType": "Antibody",
+            "mechanismsOfAction": {
+              "rows": [
+                {
+                  "mechanismOfAction": "Interleukin-13 inhibitor"
+                }
+              ]
+            }
+          },
+          "diseases": [
+            {
+              "disease": {
+                "id": "MONDO_0004980"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004980"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004980"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004980"
+              }
+            },
+            {
+              "disease": null
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004979"
+              }
+            },
+            {
+              "disease": null
+            },
+            {
+              "disease": {
+                "id": "EFO_1002029"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0024332"
+              }
+            },
+            {
+              "disease": null
+            },
+            {
+              "disease": null
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005002"
+              }
+            },
+            {
+              "disease": {
+                "id": "EFO_0000768"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004952"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005083"
+              }
+            }
+          ],
+          "clinicalReports": [
+            {
+              "clinicalStage": "PHASE_4",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_4",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "APPROVAL",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "APPROVAL",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "APPROVAL",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "APPROVAL",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": null
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": null
+                },
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "EFO_1002029"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0024332"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": null
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": null
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005002"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "EFO_0000768"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "EFO_0000768"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005002"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_1_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004952"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "UNKNOWN",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                },
+                {
+                  "disease": {
+                    "id": "MONDO_0005083"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "maxClinicalStage": "PHASE_2",
+          "drug": {
+            "id": "CHEMBL1742985",
+            "name": "ANRUKINZUMAB",
+            "drugType": "Antibody",
+            "mechanismsOfAction": {
+              "rows": [
+                {
+                  "mechanismOfAction": "Interleukin-13 inhibitor"
+                }
+              ]
+            }
+          },
+          "diseases": [
+            {
+              "disease": {
+                "id": "MONDO_0004979"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005101"
+              }
+            }
+          ],
+          "clinicalReports": [
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005101"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005101"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "maxClinicalStage": "PHASE_1",
+          "drug": {
+            "id": "CHEMBL2109464",
+            "name": "CNTO-5825",
+            "drugType": "Unknown",
+            "mechanismsOfAction": {
+              "rows": [
+                {
+                  "mechanismOfAction": "Interleukin-13 inhibitor"
+                }
+              ]
+            }
+          },
+          "diseases": [
+            {
+              "disease": {
+                "id": "MONDO_0004784"
+              }
+            }
+          ],
+          "clinicalReports": [
+            {
+              "clinicalStage": "PHASE_1",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004784"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "maxClinicalStage": "PHASE_2",
+          "drug": {
+            "id": "CHEMBL2109465",
+            "name": "QAX-576",
+            "drugType": "Unknown",
+            "mechanismsOfAction": {
+              "rows": [
+                {
+                  "mechanismOfAction": "Interleukin-13 inhibitor"
+                }
+              ]
+            }
+          },
+          "diseases": [
+            {
+              "disease": {
+                "id": "MONDO_0011786"
+              }
+            },
+            {
+              "disease": {
+                "id": "EFO_0000768"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0002771"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005324"
+              }
+            },
+            {
+              "disease": null
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005348"
+              }
+            },
+            {
+              "disease": {
+                "id": "HP_0002015"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005361"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004979"
+              }
+            },
+            {
+              "disease": null
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005011"
+              }
+            }
+          ],
+          "clinicalReports": [
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0011786"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "EFO_0000768"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0002771"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005324"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": null
+                },
+                {
+                  "disease": {
+                    "id": "MONDO_0005348"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "HP_0002015"
+                  }
+                },
+                {
+                  "disease": {
+                    "id": "MONDO_0005361"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "EFO_0000768"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": null
+                },
+                {
+                  "disease": {
+                    "id": "MONDO_0005011"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_1_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_1_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_1",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "maxClinicalStage": "PHASE_2",
+          "drug": {
+            "id": "CHEMBL4298097",
+            "name": "ROMILKIMAB",
+            "drugType": "Antibody",
+            "mechanismsOfAction": {
+              "rows": [
+                {
+                  "mechanismOfAction": "Interleukin-4 inhibitor"
+                },
+                {
+                  "mechanismOfAction": "Interleukin-13 inhibitor"
+                }
+              ]
+            }
+          },
+          "diseases": [
+            {
+              "disease": {
+                "id": "EFO_0000768"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0002771"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005100"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005019"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005100"
+              }
+            }
+          ],
+          "clinicalReports": [
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "EFO_0000768"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0002771"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005100"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "EFO_0000768"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "EFO_0000768"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005019"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_1_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "EFO_0000768"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "UNKNOWN",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005100"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "maxClinicalStage": "PHASE_3",
+          "drug": {
+            "id": "CHEMBL4297864",
+            "name": "CENDAKIMAB",
+            "drugType": "Antibody",
+            "mechanismsOfAction": {
+              "rows": [
+                {
+                  "mechanismOfAction": "Interleukin-13 inhibitor"
+                }
+              ]
+            }
+          },
+          "diseases": [
+            {
+              "disease": {
+                "id": "MONDO_0005361"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0016129"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004980"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004979"
+              }
+            }
+          ],
+          "clinicalReports": [
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005361"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005361"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005361"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0016129"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005361"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005361"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_1",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_1",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_1",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005361"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "UNKNOWN",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005361"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "maxClinicalStage": "PHASE_4",
+          "drug": {
+            "id": "CHEMBL1743081",
+            "name": "TRALOKINUMAB",
+            "drugType": "Antibody",
+            "mechanismsOfAction": {
+              "rows": [
+                {
+                  "mechanismOfAction": "Interleukin-13 inhibitor"
+                }
+              ]
+            }
+          },
+          "diseases": [
+            {
+              "disease": {
+                "id": "MONDO_0004980"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004980"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004980"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004980"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005101"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004979"
+              }
+            },
+            {
+              "disease": null
+            },
+            {
+              "disease": {
+                "id": "MONDO_0004980"
+              }
+            },
+            {
+              "disease": {
+                "id": "EFO_0000768"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005340"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005526"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005504"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005077"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005373"
+              }
+            },
+            {
+              "disease": {
+                "id": "MONDO_0005083"
+              }
+            }
+          ],
+          "clinicalReports": [
+            {
+              "clinicalStage": "PHASE_4",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "APPROVAL",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "APPROVAL",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "APPROVAL",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "APPROVAL",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "APPROVAL",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005101"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": null
+                },
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2_3",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005101"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "EFO_0000768"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "EFO_0000768"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                },
+                {
+                  "disease": {
+                    "id": "MONDO_0005340"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0005526"
+                  }
+                },
+                {
+                  "disease": {
+                    "id": "MONDO_0005504"
+                  }
+                },
+                {
+                  "disease": {
+                    "id": "MONDO_0005077"
+                  }
+                },
+                {
+                  "disease": {
+                    "id": "MONDO_0005373"
+                  }
+                },
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_1_2",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_1",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "PHASE_1",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004979"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "UNKNOWN",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                },
+                {
+                  "disease": {
+                    "id": "MONDO_0005083"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "UNKNOWN",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            },
+            {
+              "clinicalStage": "UNKNOWN",
+              "diseases": [
+                {
+                  "disease": {
+                    "id": "MONDO_0004980"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

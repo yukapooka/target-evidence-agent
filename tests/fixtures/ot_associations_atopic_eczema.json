@@ -1,0 +1,518 @@
+{
+  "disease": {
+    "associatedTargets": {
+      "rows": [
+        {
+          "score": 0.8361792180495216,
+          "target": {
+            "id": "ENSG00000143631",
+            "approvedSymbol": "FLG",
+            "approvedName": "filaggrin"
+          },
+          "datatypeScores": [
+            {
+              "id": "rna_expression",
+              "score": 0.03902551793453452
+            },
+            {
+              "id": "genetic_literature",
+              "score": 0.7295169571339454
+            },
+            {
+              "id": "literature",
+              "score": 0.9826926604126056
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.9524300516167481
+            },
+            {
+              "id": "animal_model",
+              "score": 0.41527752784849836
+            }
+          ]
+        },
+        {
+          "score": 0.7471381207729917,
+          "target": {
+            "id": "ENSG00000169194",
+            "approvedSymbol": "IL13",
+            "approvedName": "interleukin 13"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.9670407784411567
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.929176206909893
+            },
+            {
+              "id": "clinical",
+              "score": 0.9752016293526763
+            }
+          ]
+        },
+        {
+          "score": 0.7047804730740805,
+          "target": {
+            "id": "ENSG00000105397",
+            "approvedSymbol": "TYK2",
+            "approvedName": "tyrosine kinase 2"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.30834301873373826
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.7527409698240295
+            },
+            {
+              "id": "clinical",
+              "score": 0.9642730525005044
+            }
+          ]
+        },
+        {
+          "score": 0.700887650433109,
+          "target": {
+            "id": "ENSG00000077238",
+            "approvedSymbol": "IL4R",
+            "approvedName": "interleukin 4 receptor"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.8203567357533921
+            },
+            {
+              "id": "rna_expression",
+              "score": 0.032518017878998044
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.5979100560038265
+            },
+            {
+              "id": "clinical",
+              "score": 0.9847928254813302
+            }
+          ]
+        },
+        {
+          "score": 0.7001824339145007,
+          "target": {
+            "id": "ENSG00000160712",
+            "approvedSymbol": "IL6R",
+            "approvedName": "interleukin 6 receptor"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.3212229377820716
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.9546302750054505
+            },
+            {
+              "id": "genetic_literature",
+              "score": 0.7599134970145264
+            }
+          ]
+        },
+        {
+          "score": 0.6620688505106361,
+          "target": {
+            "id": "ENSG00000162434",
+            "approvedSymbol": "JAK1",
+            "approvedName": "Janus kinase 1"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.7674899562094863
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.3690038079165917
+            },
+            {
+              "id": "clinical",
+              "score": 0.9797467018092414
+            }
+          ]
+        },
+        {
+          "score": 0.6262324044859412,
+          "target": {
+            "id": "ENSG00000113580",
+            "approvedSymbol": "NR3C1",
+            "approvedName": "nuclear receptor subfamily 3 group C member 1"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.6659607118173817
+            },
+            {
+              "id": "clinical",
+              "score": 0.9968067180196103
+            }
+          ]
+        },
+        {
+          "score": 0.6218829674519218,
+          "target": {
+            "id": "ENSG00000065989",
+            "approvedSymbol": "PDE4A",
+            "approvedName": "phosphodiesterase 4A"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.5989630462523696
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.12326530530999023
+            },
+            {
+              "id": "clinical",
+              "score": 0.9788236437115457
+            }
+          ]
+        },
+        {
+          "score": 0.6161646168913233,
+          "target": {
+            "id": "ENSG00000113448",
+            "approvedSymbol": "PDE4D",
+            "approvedName": "phosphodiesterase 4D"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.6944072756825435
+            },
+            {
+              "id": "clinical",
+              "score": 0.9788236437115457
+            }
+          ]
+        },
+        {
+          "score": 0.6011944059794585,
+          "target": {
+            "id": "ENSG00000088832",
+            "approvedSymbol": "FKBP1A",
+            "approvedName": "FKBP prolyl isomerase 1A"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.021277577916406734
+            },
+            {
+              "id": "clinical",
+              "score": 0.9878552683843835
+            }
+          ]
+        },
+        {
+          "score": 0.6007978582173451,
+          "target": {
+            "id": "ENSG00000096968",
+            "approvedSymbol": "JAK2",
+            "approvedName": "Janus kinase 2"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.3763581599625496
+            },
+            {
+              "id": "clinical",
+              "score": 0.9694489483245015
+            }
+          ]
+        },
+        {
+          "score": 0.6004249609581485,
+          "target": {
+            "id": "ENSG00000184588",
+            "approvedSymbol": "PDE4B",
+            "approvedName": "phosphodiesterase 4B"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.17659649869900462
+            },
+            {
+              "id": "clinical",
+              "score": 0.9788236437115457
+            }
+          ]
+        },
+        {
+          "score": 0.5973207150526171,
+          "target": {
+            "id": "ENSG00000105650",
+            "approvedSymbol": "PDE4C",
+            "approvedName": "phosphodiesterase 4C"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.07447152270742358
+            },
+            {
+              "id": "clinical",
+              "score": 0.9788236437115457
+            }
+          ]
+        },
+        {
+          "score": 0.5914045335533407,
+          "target": {
+            "id": "ENSG00000105639",
+            "approvedSymbol": "JAK3",
+            "approvedName": "Janus kinase 3"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.16189630317730225
+            },
+            {
+              "id": "rna_expression",
+              "score": 0.02187780347694533
+            },
+            {
+              "id": "clinical",
+              "score": 0.9642345619451553
+            }
+          ]
+        },
+        {
+          "score": 0.5894549797802738,
+          "target": {
+            "id": "ENSG00000196639",
+            "approvedSymbol": "HRH1",
+            "approvedName": "histamine receptor H1"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.1919960555437816
+            },
+            {
+              "id": "clinical",
+              "score": 0.9600088798164002
+            }
+          ]
+        },
+        {
+          "score": 0.5892080631343378,
+          "target": {
+            "id": "ENSG00000117586",
+            "approvedSymbol": "TNFSF4",
+            "approvedName": "TNF superfamily member 4"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.6038845262299785
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.7961869844092857
+            },
+            {
+              "id": "clinical",
+              "score": 0.6383835316497667
+            }
+          ]
+        },
+        {
+          "score": 0.5834911085931256,
+          "target": {
+            "id": "ENSG00000168685",
+            "approvedSymbol": "IL7R",
+            "approvedName": "interleukin 7 receptor"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.1981640887646288
+            },
+            {
+              "id": "rna_expression",
+              "score": 0.0369112280253705
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.9490701133960617
+            }
+          ]
+        },
+        {
+          "score": 0.573513359966396,
+          "target": {
+            "id": "ENSG00000127318",
+            "approvedSymbol": "IL22",
+            "approvedName": "interleukin 22"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.9278937297151035
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.8834816687303862
+            },
+            {
+              "id": "clinical",
+              "score": 0.12158615952232422
+            }
+          ]
+        },
+        {
+          "score": 0.5647230111910498,
+          "target": {
+            "id": "ENSG00000019186",
+            "approvedSymbol": "CYP24A1",
+            "approvedName": "cytochrome P450 family 24 subfamily A member 1"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.31500861625442617
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.913176041426682
+            }
+          ]
+        },
+        {
+          "score": 0.5601992956728773,
+          "target": {
+            "id": "ENSG00000164509",
+            "approvedSymbol": "IL31RA",
+            "approvedName": "interleukin 31 receptor A"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.37233906274893325
+            },
+            {
+              "id": "clinical",
+              "score": 0.9028683505743135
+            }
+          ]
+        },
+        {
+          "score": 0.553927166097169,
+          "target": {
+            "id": "ENSG00000113302",
+            "approvedSymbol": "IL12B",
+            "approvedName": "interleukin 12B"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.23402387007855588
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.8644995390178655
+            },
+            {
+              "id": "clinical",
+              "score": 0.16587222943167076
+            }
+          ]
+        },
+        {
+          "score": 0.5526004247554585,
+          "target": {
+            "id": "ENSG00000182261",
+            "approvedSymbol": "NLRP10",
+            "approvedName": "NLR family pyrin domain containing 10"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.6222497652011006
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.8778732497983898
+            }
+          ]
+        },
+        {
+          "score": 0.5520986352406357,
+          "target": {
+            "id": "ENSG00000065675",
+            "approvedSymbol": "PRKCQ",
+            "approvedName": "protein kinase C theta"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.12732772816643395
+            },
+            {
+              "id": "rna_expression",
+              "score": 0.013576185714138954
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.9014922529848044
+            }
+          ]
+        },
+        {
+          "score": 0.5499947558538989,
+          "target": {
+            "id": "ENSG00000135426",
+            "approvedSymbol": "TESPA1",
+            "approvedName": "thymocyte expressed, positive selection associated 1"
+          },
+          "datatypeScores": [
+            {
+              "id": "literature",
+              "score": 0.030396539880581056
+            },
+            {
+              "id": "genetic_association",
+              "score": 0.9031797835778722
+            }
+          ]
+        },
+        {
+          "score": 0.5409211817593593,
+          "target": {
+            "id": "ENSG00000103546",
+            "approvedSymbol": "SLC6A2",
+            "approvedName": "solute carrier family 6 member 2"
+          },
+          "datatypeScores": [
+            {
+              "id": "clinical",
+              "score": 0.8897742701710087
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

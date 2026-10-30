@@ -1,0 +1,86 @@
+{
+  "target": {
+    "id": "ENSG00000077238",
+    "approvedSymbol": "IL4R",
+    "approvedName": "interleukin 4 receptor",
+    "symbolSynonyms": [
+      {
+        "label": "IL-4 receptor subunit alpha"
+      },
+      {
+        "label": "IL-4R subunit alpha"
+      },
+      {
+        "label": "IL-4R-alpha"
+      },
+      {
+        "label": "IL-4RA"
+      },
+      {
+        "label": "CD124"
+      },
+      {
+        "label": "Soluble IL-4 receptor subunit alpha"
+      },
+      {
+        "label": "Soluble IL-4R-alpha"
+      },
+      {
+        "label": "sIL4Ralpha/prot"
+      },
+      {
+        "label": "IL4-BP"
+      },
+      {
+        "label": "IL4R"
+      },
+      {
+        "label": "IL4RA"
+      },
+      {
+        "label": "582J2.1"
+      },
+      {
+        "label": "CD124"
+      },
+      {
+        "label": "CD124"
+      },
+      {
+        "label": "IL-4RA"
+      },
+      {
+        "label": "IL4RA"
+      },
+      {
+        "label": "IL4R"
+      }
+    ],
+    "nameSynonyms": [
+      {
+        "label": "Interleukin-4 receptor subunit alpha"
+      },
+      {
+        "label": "Soluble interleukin-4 receptor subunit alpha"
+      },
+      {
+        "label": "IL-4-binding protein"
+      },
+      {
+        "label": "interleukin 13 receptor"
+      },
+      {
+        "label": "interleukin-4 receptor subunit alpha"
+      },
+      {
+        "label": "IL-4 receptor subunit alpha"
+      },
+      {
+        "label": "interleukin 13 receptor"
+      },
+      {
+        "label": "interleukin-4 receptor alpha chain"
+      }
+    ]
+  }
+}
