@@ -1,0 +1,649 @@
+{
+  "target": {
+    "id": "ENSG00000077238",
+    "approvedSymbol": "IL4R",
+    "baselineExpression": {
+      "rows": [
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Pituitary",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000007"
+          },
+          "median": 16.0603,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "cervix endocervix",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000458"
+          },
+          "median": 51.9253,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Testis",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000473"
+          },
+          "median": 25.9902,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Stomach",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000945"
+          },
+          "median": 34.7224,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Ovary",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000992"
+          },
+          "median": 14.4509,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "uterus",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000995"
+          },
+          "median": 70.2128,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Vagina",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000996"
+          },
+          "median": 67.1148,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Liver",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001114"
+          },
+          "median": 53.5437,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001150"
+          },
+          "median": 10.8051,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Colon - Transverse",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001157"
+          },
+          "median": 73.2529,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Colon - Sigmoid",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001159"
+          },
+          "median": 116.679,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "small intestine terminal ileum",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001211"
+          },
+          "median": 60.4318,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Kidney - Cortex",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001225"
+          },
+          "median": 27.5919,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Bladder",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001255"
+          },
+          "median": 92.1305,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Kidney - Medulla",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001293"
+          },
+          "median": 25.5928,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Artery - Aorta",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001496"
+          },
+          "median": 45.5107,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Artery - Coronary",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001621"
+          },
+          "median": 60.0869,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Cortex",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001870"
+          },
+          "median": 6.79629,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Caudate (basal ganglia)",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001873"
+          },
+          "median": 4.51394,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Putamen (basal ganglia)",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001874"
+          },
+          "median": 3.68512,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Amygdala",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001876"
+          },
+          "median": 3.68262,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Nucleus accumbens (basal ganglia)",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001882"
+          },
+          "median": 3.59686,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Hypothalamus",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001898"
+          },
+          "median": 5.95054,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Hippocampus",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0001954"
+          },
+          "median": 4.50492,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Cerebellar Hemisphere",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0002037"
+          },
+          "median": 3.90099,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Cerebellum",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0002037"
+          },
+          "median": 6.68724,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Substantia nigra",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0002038"
+          },
+          "median": 8.2755,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Thyroid",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0002046"
+          },
+          "median": 35.7121,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Spleen",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0002106"
+          },
+          "median": 117.646,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Adipose - Subcutaneous",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0002190"
+          },
+          "median": 49.772,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Prostate",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0002367"
+          },
+          "median": 58.8933,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Adrenal Gland",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0002369"
+          },
+          "median": 36.6198,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Fallopian Tube",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0003889"
+          },
+          "median": 71.7406,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Skin - Sun Exposed (Lower leg)",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0004264"
+          },
+          "median": 27.316,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Esophagus - Gastroesophageal Junction",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0004550"
+          },
+          "median": 98.7556,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Esophagus - Muscularis",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0004648"
+          },
+          "median": 99.7091,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Minor Salivary Gland",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0006330"
+          },
+          "median": 23.6678,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Spinal cord (cervical c-1)",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0006469"
+          },
+          "median": 11.6467,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Heart - Left Ventricle",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0006566"
+          },
+          "median": 6.20519,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Heart - Atrial Appendage",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0006631"
+          },
+          "median": 19.8836,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Esophagus - Mucosa",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0006920"
+          },
+          "median": 70.8267,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Artery - Tibial",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0007610"
+          },
+          "median": 53.8374,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Breast - Mammary Tissue",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0008367"
+          },
+          "median": 45.0177,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Lung",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0008952"
+          },
+          "median": 160.302,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Frontal Cortex (BA9)",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0009834"
+          },
+          "median": 3.5757,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Brain - Anterior cingulate cortex (BA24)",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0009835"
+          },
+          "median": 3.41163,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Adipose - Visceral (Omentum)",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0010414"
+          },
+          "median": 54.797,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "muscle skeletal",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0011907"
+          },
+          "median": 4.09587,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "cervix ectocervix",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0012249"
+          },
+          "median": 52.0933,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Whole Blood",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0013756"
+          },
+          "median": 170.781,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "gtex",
+          "tissueBiosampleFromSource": "Skin - Not Sun Exposed (Suprapubic)",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0036149"
+          },
+          "median": 25.5316,
+          "unit": "TPM"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "endocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000016"
+          },
+          "median": 66.3302230834961,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "endocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000016"
+          },
+          "median": 224.14236450195312,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "endocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000016"
+          },
+          "median": 0,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "endocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000016"
+          },
+          "median": 20.900577545166016,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "endocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000016"
+          },
+          "median": 82.56534576416016,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "endocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000016"
+          },
+          "median": 67.37763977050781,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 74.1911849975586,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 119.18976593017578,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 0,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 3.8700478076934814,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 0,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 104.69232940673828,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 74.1640853881836,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 75.35444641113281,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 41.29322052001953,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 114.30885314941406,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 50.03841781616211,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 329.24688720703125,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 9.552277565002441,
+          "unit": "CPM(pseudobulk sum[counts])"
+        },
+        {
+          "datasourceId": "tabula_sapiens",
+          "tissueBiosampleFromSource": "exocrine pancreas",
+          "tissueBiosample": {
+            "biosampleId": "UBERON_0000017"
+          },
+          "median": 113.73898315429688,
+          "unit": "CPM(pseudobulk sum[counts])"
+        }
+      ]
+    }
+  }
+}

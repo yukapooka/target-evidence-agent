@@ -21,8 +21,9 @@ import requests
 from requests.adapters import BaseAdapter
 from urllib3 import HTTPResponse
 
-from agent.tools import opentargets
+from agent.tools import expression, opentargets
 from agent.tools.http import make_session
+
 
 FAKE_URL = "https://fake.test/graphql"
 
@@ -154,3 +155,19 @@ def test_target_info_includes_aliases(monkeypatch):
     assert info.symbol == "IL4R"
     assert "CD124" in info.synonyms
     assert "IL4R" not in info.synonyms
+
+
+# --- Step 6: skin expression ---
+# Fake: graphql() returns the saved IL4R expression (all 51 GTEx tissues + 20 single-cell rows to ignore).
+# Check: 2 skin tissues with TPM > 0; skin ranks 28th of 51 GTEx tissues.
+def test_skin_expression(monkeypatch):
+    fixture = load_fixture("ot_expression_il4r.json")
+    monkeypatch.setattr(expression, "graphql", lambda query, variables: fixture)
+
+    result = expression.get_skin_expression("ENSG00000077238")
+
+    assert len(result.skin_tissues) == 2
+    for tissue in result.skin_tissues:
+        assert tissue.median_tpm > 0
+    assert result.skin_rank == 28
+    assert result.gtex_tissue_count == 51
