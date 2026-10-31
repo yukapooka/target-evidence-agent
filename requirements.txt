@@ -3,3 +3,4 @@ requests-cache>=1.2
 pydantic>=2
 python-dotenv
 pytest
+openai
