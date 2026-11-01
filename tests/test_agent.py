@@ -12,7 +12,7 @@ Rationale:
 
 from agent.rubric import enforce_citations
 from agent.schemas import Candidate, Citation, CriterionScore, RankingResult
-
+from agent.tools.registry import FUNCTIONS, TOOLS, run_tool
 
 CRITERIA_NAMES = ["genetic_association", "skin_expression", "literature", "clinical_status", "mechanism"]
 PMID = Citation(source="pmid", id="26454361", note="dupilumab phase 3")
@@ -65,3 +65,24 @@ def test_enforce_citations_flags_mechanism_without_pmid():
 
     assert "mechanism: no PMID cited" in result.candidates[0].flags
     assert result.candidates[0].total_score == 10
+
+
+# --- A4e: tool registry ---
+# Fake: monkeypatch swaps one entry in FUNCTIONS for a stub, so no API is called.
+# Check: a result comes back as compact JSON; a raised error comes back as "Error: ..." text, not an exception;
+#        every tool in TOOLS except submit_ranking has a function.
+
+def test_run_tool_returns_compact_json(monkeypatch):
+    monkeypatch.setitem(FUNCTIONS, "check_pmids", lambda pmids: {p: True for p in pmids})
+    assert run_tool("check_pmids", {"pmids": ["1"]}) == '{"1":true}'
+
+def test_run_tool_returns_errors_as_text(monkeypatch):
+    def fail(ensembl_id):
+        raise ValueError(f"Unknown target ID: {ensembl_id}")
+    monkeypatch.setitem(FUNCTIONS, "get_target_info", fail)
+    assert run_tool("get_target_info", {"ensembl_id": "X"}) == "Error: ValueError: Unknown target ID: X"
+    assert run_tool("nope", {}) == "Error: unknown tool nope"
+
+def test_every_tool_has_a_function():
+    names = {t["function"]["name"] for t in TOOLS} - {"submit_ranking"}
+    assert names == set(FUNCTIONS)
