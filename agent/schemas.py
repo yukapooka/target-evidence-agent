@@ -70,3 +70,43 @@ class RankingResult(BaseModel):
     candidates: list[Candidate]
     partial: bool = False
 
+
+
+# --- C1: critic shapes ---
+# CheckResult: one deterministic check (code, not LLM) on one citation or score.
+# In:  CheckResult(symbol="IL4R", criterion="literature", citation_id="99999999", check="pmid_exists",
+#                  passed=False, detail="PMID not found in PubMed")
+# ClaimVerdict: the critic agent's judgement on one claim; "mechanism_statement" is the candidate's mechanism text.
+# In:  ClaimVerdict(symbol="TYK2", criterion="literature", verdict="partial", reason="Only a safety review is cited")
+# CriticReport: the critic's whole answer, submitted through its submit_verdicts tool.
+# Out: CriticReport(verdicts=[ClaimVerdict(...), ...], confidence_flags=[ConfidenceFlag(symbol="FLG", reason=...)])
+
+CRITERION = Literal["genetic_association", "skin_expression", "literature", "clinical_status", "mechanism"]
+
+
+class CheckResult(BaseModel):
+    symbol: str
+    criterion: CRITERION | Literal["mechanism_statement"] | None = None
+    citation_id: str | None = None
+    check: str
+    passed: bool
+    detail: str
+
+
+class ClaimVerdict(BaseModel):
+    symbol: str
+    criterion: CRITERION | Literal["mechanism_statement"]
+    verdict: Literal["supported", "partial", "unsupported"]
+    reason: str
+
+
+class ConfidenceFlag(BaseModel):
+    symbol: str
+    reason: str
+
+
+class CriticReport(BaseModel):
+    verdicts: list[ClaimVerdict]
+    confidence_flags: list[ConfidenceFlag] = []
+
+
