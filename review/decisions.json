@@ -1,0 +1,18 @@
+[
+  {
+    "condition": "atopic dermatitis",
+    "run_id": "20261101-121557-atopic-dermatitis",
+    "symbol": "FLG",
+    "decision": "keep",
+    "edited_scores": {},
+    "comment": "medium confidence; keep ranking it, not yet approved for validation"
+  },
+  {
+    "condition": "atopic dermatitis",
+    "run_id": "20261101-121557-atopic-dermatitis",
+    "symbol": "IL31RA",
+    "decision": "keep",
+    "edited_scores": {"genetic_association": 2},
+    "comment": "medium confidence; keep ranking it, not yet approved for validation. Overall Open Targets score 0.56 is a 2 under the rubric"
+  }
+]

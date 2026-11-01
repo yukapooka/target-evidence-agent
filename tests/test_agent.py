@@ -15,7 +15,7 @@ from types import SimpleNamespace
 
 from openai.types.chat import ChatCompletion
 
-from agent.loop import run_agent
+from agent.loop import run_agent, schema_validator
 from agent.rubric import enforce_citations
 from agent.schemas import Candidate, Citation, CriterionScore, RankingResult
 from agent.tools.registry import FUNCTIONS, TOOLS, run_tool
@@ -97,7 +97,8 @@ def test_every_tool_has_a_function():
 # --- B1e: tool-calling loop with a fake LLM ---
 # Fake: FakeClient stands in for the OpenAI client. It returns scripted replies in order (real ChatCompletion
 #       objects built from dicts) and records every request it receives. run_tool is a stub; no API is called.
-# Check: (1) tool call then submit -> final_args returned, partial=False, 1 tool call, cost summed, trace written.
+# Check: (1) tool call then submit -> final_args returned, partial=False, 1 tool call, cost summed, trace written
+#            (starting with the task message).
 #        (2) max_tool_calls=1 -> the loop stops, forces submit_ranking via tool_choice, partial=True.
 
 class FakeClient:
@@ -123,11 +124,11 @@ def _reply(tool, args, call_id="c1"):
     })
 
 
-def _run(client, tmp_path, max_tool_calls=50):
+def _run(client, tmp_path, max_tool_calls=50, **kwargs):
     return run_agent(client=client, agent="ranker", model="fake", system_prompt="s", user_prompt="u",
                     tools=[], run_tool=lambda name, args: '{"ok":true}', submit_tool="submit_ranking",
                     max_tool_calls=max_tool_calls, max_cost=1.0, timeout_s=60,
-                    trace_path=str(tmp_path / "trace.jsonl"), prompt_version="test")
+                    trace_path=str(tmp_path / "trace.jsonl"), prompt_version="test", **kwargs)
 
 
 def test_run_agent_calls_tool_then_submits(tmp_path):
@@ -139,7 +140,7 @@ def test_run_agent_calls_tool_then_submits(tmp_path):
     assert (result.partial, result.stop_reason, result.tool_calls) == (False, "submitted", 1)
     assert result.cost == pytest.approx(0.002)
     lines = (tmp_path / "trace.jsonl").read_text().splitlines()
-    assert [json.loads(line)["type"] for line in lines] == ["llm", "tool", "llm", "submit"]
+    assert [json.loads(line)["type"] for line in lines] == ["start", "llm", "tool", "llm", "submit"]
 
 
 def test_run_agent_limit_forces_submit(tmp_path):
@@ -150,4 +151,28 @@ def test_run_agent_limit_forces_submit(tmp_path):
     assert (result.partial, result.stop_reason) == (True, "max_tool_calls")
     assert result.final_args == {"candidates": []}
     assert client.requests[-1]["tool_choice"]["function"]["name"] == "submit_ranking"
+
+
+# Fake: the first submit sends candidates as a string (as Claude Haiku did on 1 Nov); the second sends a list.
+# Check: the first is rejected with the validator's message and the LLM gets to fix it; with no retries left,
+#        a bad answer is returned as is so the caller can report it.
+
+def test_run_agent_rejects_invalid_submit_and_accepts_fix(tmp_path):
+    validate = schema_validator(RankingResult)
+    bad = {"condition": "ad", "disease_id": "x", "candidates": "[]"}
+    good = {"condition": "ad", "disease_id": "x", "candidates": []}
+    client = FakeClient([_reply("submit_ranking", bad), _reply("submit_ranking", good, call_id="c2")])
+    result = _run(client, tmp_path, validate=validate)
+
+    assert (result.final_args, result.stop_reason) == (good, "submitted")
+    rejection = [m for m in client.requests[-1]["messages"] if m["role"] == "tool"][0]["content"]
+    assert rejection.startswith("Submission rejected: candidates: Input should be a valid list")
+
+
+def test_run_agent_returns_invalid_submit_when_no_retries_left(tmp_path):
+    bad = {"condition": "ad", "disease_id": "x", "candidates": "[]"}
+    client = FakeClient([_reply("submit_ranking", bad)])
+    result = _run(client, tmp_path, validate=schema_validator(RankingResult), max_rejections=0)
+
+    assert (result.final_args, result.stop_reason) == (bad, "submitted")
 

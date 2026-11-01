@@ -109,7 +109,7 @@ def get_associated_targets(disease_id: str, size: int = 25) -> list[TargetAssoci
 # In:  get_known_drugs("ENSG00000169194", "MONDO_0004980")   (IL13, atopic eczema)
 # Out: [KnownDrug(drug_id="CHEMBL1743035", drug_name="LEBRIKIZUMAB", drug_type="Antibody",
 #                 stage_for_disease="APPROVAL", max_stage_any_disease="PHASE_4",
-#                 mechanisms=["Interleukin-13 inhibitor"]),
+#                 mechanisms=["Interleukin-13 inhibitor"], drug_targets=["IL13"]),
 #       KnownDrug(drug_name="TRALOKINUMAB", ...), KnownDrug(drug_name="CENDAKIMAB", stage_for_disease="PHASE_2", ...)]
 #       (highest stage first; IL13 drugs never tested in atopic eczema are left out)
 
@@ -119,7 +119,7 @@ query KnownDrugs($ensemblId: String!) {
     drugAndClinicalCandidates {
       rows {
         maxClinicalStage
-        drug { id name drugType mechanismsOfAction { rows { mechanismOfAction } } }
+        drug { id name drugType mechanismsOfAction { rows { mechanismOfAction targets { approvedSymbol } } } }
         diseases { disease { id } }
         clinicalReports { clinicalStage diseases { disease { id } } }
       }
@@ -139,6 +139,7 @@ class KnownDrug(BaseModel):
     stage_for_disease: str
     max_stage_any_disease: str
     mechanisms: list[str]
+    drug_targets: list[str] = []     # symbols of every target the drug acts on (all mechanisms)
 
 
 def _stage_rank(stage: str) -> int:
@@ -170,6 +171,8 @@ def get_known_drugs(ensembl_id: str, disease_id: str) -> list[KnownDrug]:
             stage_for_disease=max(stages, key=_stage_rank) if stages else "UNKNOWN",
             max_stage_any_disease=row["maxClinicalStage"],
             mechanisms=sorted({m["mechanismOfAction"] for m in (drug["mechanismsOfAction"] or {}).get("rows", [])}),
+            drug_targets=sorted({t["approvedSymbol"] for m in (drug["mechanismsOfAction"] or {}).get("rows", [])
+                                 for t in m.get("targets") or []}),
         ))
     return sorted(drugs, key=lambda d: _stage_rank(d.stage_for_disease), reverse=True)
 
@@ -216,3 +219,4 @@ def get_target_info(ensembl_id: str) -> TargetInfo:
         name=target["approvedName"],
         synonyms=synonyms,
     )
+

@@ -21,6 +21,7 @@ import time
 from datetime import datetime, timezone
 from dataclasses import dataclass
 from openai import OpenAI
+from pydantic import ValidationError
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -75,14 +76,27 @@ def _trace(trace_path: str, record: dict) -> None:
 #                timeout_s=600, trace_path="traces/run1.jsonl", prompt_version="ranker-v1")
 # Out: AgentResult(final_args={"condition": ..., "candidates": [...]}, partial=False, stop_reason="submitted",
 #                  tool_calls=23, prompt_tokens=..., completion_tokens=..., cost=0.08, runtime_s=95.2)
+# validate (optional): args -> error text or None. An invalid submit is sent back to the LLM to fix, up to
+# max_rejections times; after that the last answer is returned as is (the caller reports the error).
+# In:  run_agent(..., validate=schema_validator(RankingResult))
+# reasoning_effort (optional): "low" | "medium" | "high", sent to OpenRouter as {"reasoning": {"effort": ...}} on
+# every request of this agent; reasoning (thinking) tokens are billed as output, so this controls cost.
+# Each LLM trace line records reasoning_tokens.
+#      LLM submits {"candidates": "[{...}]"}  -> tool reply "Submission rejected: candidates: Input should be a
+#      valid list ... Fix it and call submit_ranking again."  -> LLM resubmits a real list -> stop_reason="submitted"
 
 def run_agent(*, client, agent: str, model: str, system_prompt: str, user_prompt: str, tools: list[dict],
               run_tool, submit_tool: str, max_tool_calls: int, max_cost: float, timeout_s: float,
-              trace_path: str, prompt_version: str) -> AgentResult:
+              trace_path: str, prompt_version: str, validate=None, max_rejections: int = 2,
+              reasoning_effort: str | None = None) -> AgentResult:
     result = AgentResult(final_args=None, partial=True, stop_reason="")
     messages = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
     step = {"agent": agent, "model": model, "prompt_version": prompt_version}
+    if reasoning_effort:
+        step["reasoning_effort"] = reasoning_effort
     start = time.monotonic()
+    rejections = 0
+    _trace(trace_path, {**step, "type": "start", "prompt": user_prompt})   # full task message, incl. any feedback
 
     while not result.stop_reason:
         msg = _ask_llm(client, model, messages, tools, result, step, trace_path)
@@ -97,6 +111,13 @@ def run_agent(*, client, agent: str, model: str, system_prompt: str, user_prompt
             except json.JSONDecodeError:
                 args = None
             if name == submit_tool and args is not None:
+                error = validate(args) if validate else None
+                if error and rejections < max_rejections:
+                    rejections += 1
+                    output = f"Submission rejected: {error} Fix it and call {submit_tool} again."
+                    _trace(trace_path, {**step, "type": "submit_rejected", "tool": name, "result": output})
+                    messages.append({"role": "tool", "tool_call_id": call.id, "content": output})
+                    continue
                 _trace(trace_path, {**step, "type": "submit", "tool": name})
                 result.final_args, result.partial, result.stop_reason = args, False, "submitted"
                 break
@@ -134,16 +155,19 @@ def run_agent(*, client, agent: str, model: str, system_prompt: str, user_prompt
 # Out: result.final_args = {"candidates": [...]} (or still None if the model could not comply)
 
 def _ask_llm(client, model, messages, tools, result, step, trace_path, tool_choice="auto"):
-    response = client.chat.completions.create(model=model, messages=messages, tools=tools,
-                                              tool_choice=tool_choice)
+    effort = step.get("reasoning_effort")
+    response = client.chat.completions.create(model=model, messages=messages, tools=tools, tool_choice=tool_choice,
+                                              extra_body={"reasoning": {"effort": effort}} if effort else None)
     usage = response.usage
+    details = getattr(usage, "completion_tokens_details", None)
     cost = getattr(usage, "cost", 0.0) or 0.0
     result.prompt_tokens += usage.prompt_tokens
     result.completion_tokens += usage.completion_tokens
     result.cost += cost
     msg = response.choices[0].message
     _trace(trace_path, {**step, "type": "llm", "prompt_tokens": usage.prompt_tokens,
-                        "completion_tokens": usage.completion_tokens, "cost": cost,
+                        "completion_tokens": usage.completion_tokens,
+                        "reasoning_tokens": getattr(details, "reasoning_tokens", None), "cost": cost,
                         "result": msg.content or ""})
     messages.append(msg.model_dump(exclude_none=True))
     return msg
@@ -163,3 +187,21 @@ def _force_submit(client, model, messages, tools, result, step, trace_path, subm
             _trace(trace_path, {**step, "type": "submit", "tool": submit_tool, "forced": True})
             return
 
+
+
+# --- C5c: submit validation ---
+# Builds a validate function for run_agent from a Pydantic model. Errors are kept short (field path + message, at
+# most 5) because the LLM's broken answer can be thousands of characters long and shouldn't be echoed back.
+# In:  schema_validator(RankingResult)({"condition": "ad", "disease_id": "x", "candidates": "[...]"})
+# Out: "candidates: Input should be a valid list. Send nested fields as JSON arrays and objects, not as strings."
+# In:  schema_validator(RankingResult)(valid_args)   -> None
+
+def schema_validator(model):
+    def validate(args: dict) -> str | None:
+        try:
+            model.model_validate(args)
+            return None
+        except ValidationError as e:
+            problems = "; ".join(f'{".".join(str(p) for p in err["loc"])}: {err["msg"]}' for err in e.errors()[:5])
+            return f"{problems}. Send nested fields as JSON arrays and objects, not as strings."
+    return validate

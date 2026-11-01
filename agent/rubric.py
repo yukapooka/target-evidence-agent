@@ -60,7 +60,8 @@ CRITERIA = {
             0: "No drug tested for this disease",
             1: "Early phase (Phase 1) for this disease",
             2: "Phase 2 for this disease",
-            3: "Approved, or Phase 3, for this disease",
+            3: "Approved, or Phase 3, for this disease, with a drug whose only target is this one "
+               "(a drug that also acts on other targets counts as 2)",
         },
     },
     "mechanism": {
@@ -101,7 +102,8 @@ def enforce_citations(result: RankingResult) -> RankingResult:
             if s.score > 0 and not s.citations:
                 candidate.flags.append(f"{s.criterion}: score {s.score} set to 0 (no citation)")
                 s.score = 0
-        if not any(c.source == "pmid" for c in candidate.mechanism_citations):
+        no_pmid = not any(c.source == "pmid" for c in candidate.mechanism_citations)
+        if no_pmid and "mechanism: no PMID cited" not in candidate.flags:   # safe to run twice
             candidate.flags.append("mechanism: no PMID cited")
         candidate.total_score = sum(s.score for s in candidate.scores)
 

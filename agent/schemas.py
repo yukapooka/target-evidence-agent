@@ -91,6 +91,8 @@ class CheckResult(BaseModel):
     check: str
     passed: bool
     detail: str
+    max_score: int | None = None     # score_within_record only: the most the record supports
+    annotation: bool = False         # True = a note for reviewers, not a pass/fail check
 
 
 class ClaimVerdict(BaseModel):

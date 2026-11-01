@@ -17,10 +17,12 @@ Rationale:
 import pytest
 
 from agent import critic
-from agent.schemas import Candidate, Citation, CriterionScore, RankingResult
+from agent.schemas import Candidate, Citation, CriterionScore, RankingResult, ClaimVerdict, ConfidenceFlag, CriticReport
 from agent.tools.expression import SkinExpression, TissueTPM
 from agent.tools.opentargets import KnownDrug, TargetAssociation, TargetInfo
 from agent.tools.pubmed import Article
+from agent.tools.registry import FUNCTIONS
+from tests.test_agent import FakeClient, _reply
 
 
 # --- C2e: deterministic checks ---
@@ -84,3 +86,63 @@ def test_mismatched_target_is_not_checked_further(fake_tools):
     result.candidates[0].symbol = "IL13"
     checks = critic.run_checks(result)
     assert [(c.check, c.passed) for c in checks] == [("target_matches", False)]
+
+
+def test_apply_checks_removes_citation_and_caps_score(fake_tools):
+    result = _result(skin_score=3, literature_pmid="99999999")
+    fixed = critic.apply_checks(result, critic.run_checks(result))
+
+    scores = {s.criterion: s.score for s in fixed.candidates[0].scores}
+    assert scores["literature"] == 0 and scores["skin_expression"] == 2
+    assert fixed.candidates[0].total_score == 3 + 2 + 0 + 3 + 2
+    assert result.candidates[0].scores[1].score == 3
+
+
+def test_apply_verdicts_zeroes_unsupported_and_flags_partial():
+    report = CriticReport(verdicts=[
+        ClaimVerdict(symbol="IL4R", criterion="literature", verdict="unsupported", reason="off topic"),
+        ClaimVerdict(symbol="IL4R", criterion="mechanism", verdict="partial", reason="animal data only"),
+    ], confidence_flags=[ConfidenceFlag(symbol="IL4R", reason="one paper")])
+    fixed = critic.apply_verdicts(_result(), report)
+
+    c = fixed.candidates[0]
+    assert {s.criterion: s.score for s in c.scores}["literature"] == 0
+    assert {s.criterion: s.score for s in c.scores}["mechanism"] == 2
+    assert len([f for f in c.flags if f.startswith("critic:")]) == 3
+
+
+def test_critique_runs_agent_and_applies_verdicts(fake_tools, tmp_path, monkeypatch):
+    monkeypatch.setenv("CRITIC_MODEL", "fake")
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setitem(FUNCTIONS, "fetch_abstracts", lambda pmids: [])
+    verdicts = {"verdicts": [{"symbol": "IL4R", "criterion": "literature", "verdict": "unsupported",
+                              "reason": "off topic"}], "confidence_flags": []}
+    client = FakeClient([_reply("fetch_abstracts", {"pmids": ["111"]}),
+                         _reply("submit_verdicts", verdicts, call_id="c2")])
+
+    out = critic.critique(_result(), "run1", client=client)
+
+    assert (out["error"], out["usage"]["tool_calls"]) == (None, 1)
+    scores = {s["criterion"]: s["score"] for s in out["result"]["candidates"][0]["scores"]}
+    assert scores["literature"] == 0
+
+# Fake: the cited approved drug also acts on IL13 (multi-target).
+# Check: an annotation (not a failure) names IL13; clinical score capped 3 -> 2;
+#        the drug citation is kept (the evidence is shared, not wrong) and the note is added as a flag.
+
+def test_multi_target_drug_is_annotated_and_capped(fake_tools, monkeypatch):
+    monkeypatch.setattr(critic, "get_known_drugs", lambda ensembl_id, disease_id: [KnownDrug(
+        drug_id="CHEMBL1", drug_name="DUPILUMAB", stage_for_disease="APPROVAL", max_stage_any_disease="APPROVAL",
+        mechanisms=[], drug_targets=["IL13", "IL4R"])])
+    result = _result()
+    checks = critic.run_checks(result)
+
+    assert _failed(checks) == {("score_within_record", "clinical_status")}
+    note = next(c for c in checks if c.check == "drug_multi_target")
+    assert note.annotation and note.passed
+    assert note.detail == "DUPILUMAB also acts on IL13; evidence is shared, so it supports IL4R at most partly."
+
+    fixed = critic.apply_checks(result, checks).candidates[0]
+    clinical = {s.criterion: s for s in fixed.scores}["clinical_status"]
+    assert clinical.score == 2 and [x.id for x in clinical.citations] == ["CHEMBL1"]
+    assert any(f.startswith("clinical_status: note: DUPILUMAB also acts on IL13") for f in fixed.flags)

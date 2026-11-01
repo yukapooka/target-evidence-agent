@@ -20,12 +20,16 @@ Rationale:
 """
 
 import re
+import os
 
-from agent.schemas import CheckResult, RankingResult
+from agent.schemas import CheckResult, CriticReport, RankingResult
 from agent.tools.expression import SkinExpression, get_skin_expression
 from agent.tools.opentargets import TargetAssociation, get_associated_targets, get_known_drugs, get_target_info
 from agent.tools.pubmed import check_pmids, fetch_abstracts
-
+from agent.rubric import enforce_citations
+from agent.loop import make_client, run_agent, schema_validator
+from agent.prompts import CRITIC_PROMPT_VERSION, CRITIC_SYSTEM_PROMPT, critic_user_prompt
+from agent.tools.registry import CRITIC_TOOL_NAMES, CRITIC_TOOLS, run_tool
 
 # --- C2a: score ceilings from records ---
 # The highest rubric score each record supports (bands from CRITERIA in rubric.py). A claimed score above
@@ -114,15 +118,37 @@ def _pmid_checks(result: RankingResult) -> list[CheckResult]:
 # For the three criteria backed by a database record, per candidate:
 #   record_matches       each cited Open Targets / expression ID is a real record for this target
 #   score_within_record  a non-zero score is not above the ceiling from C2a
+#   drug_multi_target    annotation, not pass/fail: a cited drug also acts on other targets; lists them and marks
+#                        those associated with this disease
 # Association citations may be written "ENSG...|MONDO...", so only the part before "|" is compared.
+# Clinical status: a drug counts fully (up to 3) only if this target is its sole mechanism. A drug that also acts
+# on other targets counts up to 2, and its other targets are listed, marking those associated with this disease
+# In:  TYK2 claims clinical_status 3, citing UPADACITINIB (acts on JAK1, JAK2, JAK3, TYK2; approved for AD)
+# Out: CheckResult(symbol="TYK2", criterion="clinical_status", citation_id="CHEMBL3622821", check="drug_multi_target",
+#                  passed=True, annotation=True, detail="UPADACITINIB also acts on JAK1 (associated with this disease),
+#                  JAK2 (associated with this disease), JAK3 (...); evidence is shared, so it supports TYK2 at most partly.")
+#      CheckResult(symbol="TYK2", criterion="clinical_status", check="score_within_record", passed=False,
+#                  detail="score 3, record supports up to 2")
 # In:  _record_checks(result)   (IL4R claims skin_expression 3; its record is 27 TPM, skin rank 28)
 # Out: [CheckResult(symbol="IL4R", criterion="skin_expression", citation_id="ENSG00000077238",
 #                   check="record_matches", passed=True, detail="record found"),
 #       CheckResult(symbol="IL4R", criterion="skin_expression", citation_id=None, check="score_within_record",
 #                   passed=False, detail="score 3, record supports up to 2"), ...]
 
+def _is_multi_target(drug, symbol: str) -> bool:
+    # Unknown targets (empty list) are not penalised.
+    return bool(drug.drug_targets) and set(drug.drug_targets) != {symbol}
+
+
+def _multi_target_detail(drug, symbol: str, associated_symbols: set[str]) -> str:
+    others = [f"{t} (associated with this disease)" if t in associated_symbols else t
+              for t in drug.drug_targets if t != symbol]
+    return f"{drug.drug_name} also acts on {', '.join(others)}; evidence is shared, so it supports {symbol} at most partly."
+
+
 def _record_checks(result: RankingResult) -> list[CheckResult]:
     associations = {a.ensembl_id: a for a in get_associated_targets(result.disease_id, size=50)}
+    associated_symbols = {a.symbol for a in associations.values()}
     checks = []
     for c in result.candidates:
         scores = {s.criterion: s for s in c.scores}
@@ -145,18 +171,23 @@ def _record_checks(result: RankingResult) -> list[CheckResult]:
                                           check="record_matches", passed=ok, detail=detail))
 
         drug_citations = scores["clinical_status"].citations if "clinical_status" in scores else []
+        cited_drugs = [drugs[x.id] for x in drug_citations if x.id in drugs]
+        for d in [d for d in cited_drugs if _is_multi_target(d, c.symbol)]:
+            checks.append(CheckResult(symbol=c.symbol, criterion="clinical_status", citation_id=d.drug_id,
+                                      check="drug_multi_target", passed=True, annotation=True,
+                                      detail=_multi_target_detail(d, c.symbol, associated_symbols)))
         ceilings = {
             "genetic_association": _association_ceiling(assoc) if assoc else 0,
             "skin_expression": _expression_ceiling(expression),
-            "clinical_status": max((_clinical_ceiling(drugs[x.id].stage_for_disease)
-                                    for x in drug_citations if x.id in drugs), default=0),
+            "clinical_status": max((min(_clinical_ceiling(d.stage_for_disease),
+                                        2 if _is_multi_target(d, c.symbol) else 3) for d in cited_drugs), default=0),
         }
         for criterion, ceiling in ceilings.items():
             s = scores.get(criterion)
             if s is None or s.score == 0:
                 continue
             checks.append(CheckResult(symbol=c.symbol, criterion=criterion, check="score_within_record",
-                                      passed=s.score <= ceiling,
+                                      passed=s.score <= ceiling,  max_score=ceiling,
                                       detail=f"score {s.score}, record supports up to {ceiling}"))
     return checks
 
@@ -183,4 +214,124 @@ def run_checks(result: RankingResult) -> list[CheckResult]:
 
     checked = result.model_copy(update={"candidates": valid})
     return checks + _pmid_checks(checked) + _record_checks(checked)
+
+
+
+# --- C3: apply the check results ---
+# Turns failed checks into changes on a copy of the result, then re-applies the citation rule:
+#   target_matches failed           -> every citation of that candidate removed (all its scores become 0)
+#   pmid_* or record_matches failed -> that citation removed (a score left without citations becomes 0)
+#   score_within_record failed      -> score capped at the record's maximum
+#   annotations (drug_multi_target) -> added as a note (nothing removed; any cap comes via score_within_record)
+# Each change adds a flag. The original result is not modified.
+# In:  apply_checks(result, [CheckResult(symbol="FLG", criterion="literature", citation_id="99999999",
+#                                        check="pmid_exists", passed=False, ...)])   (FLG literature cites only that PMID)
+# Out: RankingResult where FLG literature = 0, flags include
+#      "literature: citation 99999999 removed (PMID not found in PubMed)" and "literature: score 2 set to 0 (no citation)",
+#      totals recomputed and candidates re-ranked
+
+def apply_checks(result: RankingResult, checks: list[CheckResult]) -> RankingResult:
+    result = result.model_copy(deep=True)
+    candidates = {c.symbol: c for c in result.candidates}
+    for check in checks:
+        c = candidates.get(check.symbol)
+        if c is None:
+            continue
+        if check.annotation:
+            c.flags.append(f"{check.criterion}: note: {check.detail}")
+            continue
+        if check.passed:
+            continue
+        scores = {s.criterion: s for s in c.scores}
+        if check.check == "target_matches":
+            for s in c.scores:
+                s.citations = []
+            c.mechanism_citations = []
+            c.flags.append(f"target: {check.detail}; all citations removed")
+        elif check.check == "score_within_record":
+            s = scores[check.criterion]
+            c.flags.append(f"{check.criterion}: score {s.score} capped at {check.max_score} (record)")
+            s.score = check.max_score
+        else:
+            if check.criterion == "mechanism_statement":
+                c.mechanism_citations = [x for x in c.mechanism_citations if x.id != check.citation_id]
+            else:
+                s = scores[check.criterion]
+                s.citations = [x for x in s.citations if x.id != check.citation_id]
+            c.flags.append(f"{check.criterion}: citation {check.citation_id} removed ({check.detail})")
+    return enforce_citations(result)
+
+# --- C4c: apply the critic's verdicts ---
+# Turns the critic agent's report into changes on a copy of the result:
+#   partial or unsupported verdict -> flag ("critic: literature partial (only a safety review is cited)")
+#   unsupported on a score         -> that score set to 0, flagged
+#   unsupported mechanism_statement, confidence flags -> flagged only (no score to change)
+# Then totals are recomputed and candidates re-ranked (enforce_citations).
+# In:  apply_verdicts(result, CriticReport(verdicts=[ClaimVerdict(symbol="TYK2", criterion="literature",
+#                                                   verdict="unsupported", reason="review is not about AD")]))
+# Out: RankingResult where TYK2 literature = 0, total lowered by 1, with two flags explaining why
+
+def apply_verdicts(result: RankingResult, report: CriticReport) -> RankingResult:
+    result = result.model_copy(deep=True)
+    candidates = {c.symbol: c for c in result.candidates}
+    for v in report.verdicts:
+        c = candidates.get(v.symbol)
+        if c is None or v.verdict == "supported":
+            continue
+        c.flags.append(f"critic: {v.criterion} {v.verdict} ({v.reason})")
+        if v.verdict == "unsupported" and v.criterion != "mechanism_statement":
+            for s in c.scores:
+                if s.criterion == v.criterion and s.score > 0:
+                    c.flags.append(f"{v.criterion}: score {s.score} set to 0 (critic: unsupported)")
+                    s.score = 0
+    for f in report.confidence_flags:
+        if f.symbol in candidates:
+            candidates[f.symbol].flags.append(f"critic: confidence too high ({f.reason})")
+    return enforce_citations(result)
+
+
+# --- C4d: run the critic ---
+# Deterministic checks -> apply them -> critic agent (shared loop, read-only tools, 20 tool calls) -> apply its
+# verdicts. Writes to the same trace file as the ranker, labelled agent="critic". If the critic fails to submit
+# valid verdicts, the checked result is still returned, with "error" set.
+# In:  critique(ranking_result, run_id="20261101-103000-atopic-dermatitis")
+# Out: {"model": "google/gemini-3.8-flash", "prompt_version": "critic-v1", "stop_reason": "submitted",
+#       "partial": False, "error": None, "usage": {"tool_calls": 6, "cost": 0.004, ...},
+#       "checks": [...], "report": {"verdicts": [...], "confidence_flags": [...]}, "result": {...final ranking...}}
+
+def _critic_run_tool(name: str, args: dict) -> str:
+    if name not in CRITIC_TOOL_NAMES:
+        return f"Error: {name} is not available to the critic"
+    return run_tool(name, args)
+
+
+def critique(ranking: RankingResult, run_id: str, client=None) -> dict:
+    checks = run_checks(ranking)
+    checked = apply_checks(ranking, checks)
+    model = os.environ["CRITIC_MODEL"]
+    reasoning_effort = os.getenv("CRITIC_REASONING_EFFORT") or None
+    agent_result = run_agent(
+        client=client or make_client(), agent="critic", model=model,
+        system_prompt=CRITIC_SYSTEM_PROMPT, user_prompt=critic_user_prompt(checked, checks),
+        tools=CRITIC_TOOLS, run_tool=_critic_run_tool, submit_tool="submit_verdicts",
+        validate=schema_validator(CriticReport), reasoning_effort=reasoning_effort,
+        max_tool_calls=20, max_cost=float(os.getenv("MAX_COST_PER_RUN_USD", "0.50")),
+        timeout_s=600, trace_path=f"traces/{run_id}.jsonl", prompt_version=CRITIC_PROMPT_VERSION)
+
+    report, error = None, None
+    if agent_result.final_args is None:
+        error = "no verdicts submitted"
+    else:
+        try:
+            report = CriticReport.model_validate(agent_result.final_args)
+        except ValidationError as e:
+            error = f"verdicts failed validation: {e}"
+
+    final = apply_verdicts(checked, report) if report else checked
+    usage = {k: getattr(agent_result, k)
+             for k in ("tool_calls", "prompt_tokens", "completion_tokens", "cost", "runtime_s")}
+    return {"model": model, "prompt_version": CRITIC_PROMPT_VERSION, "reasoning_effort": reasoning_effort,
+            "stop_reason": agent_result.stop_reason, "partial": agent_result.partial, "error": error, "usage": usage,
+            "checks": [c.model_dump() for c in checks],
+            "report": report.model_dump() if report else None, "result": final.model_dump()}
 

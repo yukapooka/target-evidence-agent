@@ -15,7 +15,7 @@ Rationale:
     - submit_ranking's parameters come from RankingResult.model_json_schema(), so the schema lives in one place.
 """
 import json
-from agent.schemas import RankingResult
+from agent.schemas import CriticReport, RankingResult
 from agent.tools import expression, opentargets, pubmed
 from pydantic_core import to_jsonable_python
 
@@ -107,6 +107,29 @@ TOOLS = [
             "description": "Submit the final ranked candidates. Call once, when all scoring is done. "
                            "Every non-zero score must cite a record returned by a tool.",
             "parameters": _inline_refs(RankingResult.model_json_schema()),
+        },
+    },
+]
+
+
+# --- C4b: critic tool set ---
+# The critic gets read-only tools to re-fetch cited evidence (no searching for new evidence), plus its own
+# submit tool, whose parameters come from CriticReport.
+# In:  [t["function"]["name"] for t in CRITIC_TOOLS]
+# Out: ["get_associated_targets", "get_known_drugs", "get_target_info", "get_skin_expression",
+#       "fetch_abstracts", "submit_verdicts"]
+
+CRITIC_TOOL_NAMES = {"get_associated_targets", "get_known_drugs", "get_target_info",
+                     "get_skin_expression", "fetch_abstracts"}
+
+CRITIC_TOOLS = [t for t in TOOLS if t["function"]["name"] in CRITIC_TOOL_NAMES] + [
+    {
+        "type": "function",
+        "function": {
+            "name": "submit_verdicts",
+            "description": "Submit all verdicts (one per claim: five criteria plus mechanism_statement, for every "
+                           "candidate) and any confidence flags. Call once, when the review is done.",
+            "parameters": _inline_refs(CriticReport.model_json_schema()),
         },
     },
 ]
