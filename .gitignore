@@ -1,6 +1,7 @@
 # Private
 .env
 CLAUDE.local.md
+docs/plain-english-guide.md
 .claude/settings.local.json
 
 # Python
