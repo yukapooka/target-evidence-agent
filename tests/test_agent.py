@@ -9,10 +9,17 @@ How:
 Rationale:
     - The citation rule is the main guard against scores from model memory, so it is tested directly.
 """
+import json
+import pytest
+from types import SimpleNamespace
 
+from openai.types.chat import ChatCompletion
+
+from agent.loop import run_agent
 from agent.rubric import enforce_citations
 from agent.schemas import Candidate, Citation, CriterionScore, RankingResult
 from agent.tools.registry import FUNCTIONS, TOOLS, run_tool
+
 
 CRITERIA_NAMES = ["genetic_association", "skin_expression", "literature", "clinical_status", "mechanism"]
 PMID = Citation(source="pmid", id="26454361", note="dupilumab phase 3")
@@ -86,3 +93,61 @@ def test_run_tool_returns_errors_as_text(monkeypatch):
 def test_every_tool_has_a_function():
     names = {t["function"]["name"] for t in TOOLS} - {"submit_ranking"}
     assert names == set(FUNCTIONS)
+
+# --- B1e: tool-calling loop with a fake LLM ---
+# Fake: FakeClient stands in for the OpenAI client. It returns scripted replies in order (real ChatCompletion
+#       objects built from dicts) and records every request it receives. run_tool is a stub; no API is called.
+# Check: (1) tool call then submit -> final_args returned, partial=False, 1 tool call, cost summed, trace written.
+#        (2) max_tool_calls=1 -> the loop stops, forces submit_ranking via tool_choice, partial=True.
+
+class FakeClient:
+    def __init__(self, replies):
+        self.replies = list(replies)
+        self.requests = []
+        self.chat = SimpleNamespace(completions=SimpleNamespace(create=self.create))
+
+
+    def create(self, **kwargs):
+        self.requests.append(kwargs)
+        return self.replies.pop(0)
+
+
+def _reply(tool, args, call_id="c1"):
+    return ChatCompletion.model_validate({
+        "id": "x", "object": "chat.completion", "created": 0, "model": "fake",
+        "choices": [{"index": 0, "finish_reason": "tool_calls", "message": {
+            "role": "assistant", "content": None,
+            "tool_calls": [{"id": call_id, "type": "function",
+                            "function": {"name": tool, "arguments": json.dumps(args)}}]}}],
+        "usage": {"prompt_tokens": 10, "completion_tokens": 5, "total_tokens": 15, "cost": 0.001},
+    })
+
+
+def _run(client, tmp_path, max_tool_calls=50):
+    return run_agent(client=client, agent="ranker", model="fake", system_prompt="s", user_prompt="u",
+                    tools=[], run_tool=lambda name, args: '{"ok":true}', submit_tool="submit_ranking",
+                    max_tool_calls=max_tool_calls, max_cost=1.0, timeout_s=60,
+                    trace_path=str(tmp_path / "trace.jsonl"), prompt_version="test")
+
+
+def test_run_agent_calls_tool_then_submits(tmp_path):
+    client = FakeClient([_reply("search_disease", {"query": "ad"}),
+                        _reply("submit_ranking", {"candidates": []}, call_id="c2")])
+    result = _run(client, tmp_path)
+
+    assert result.final_args == {"candidates": []}
+    assert (result.partial, result.stop_reason, result.tool_calls) == (False, "submitted", 1)
+    assert result.cost == pytest.approx(0.002)
+    lines = (tmp_path / "trace.jsonl").read_text().splitlines()
+    assert [json.loads(line)["type"] for line in lines] == ["llm", "tool", "llm", "submit"]
+
+
+def test_run_agent_limit_forces_submit(tmp_path):
+    client = FakeClient([_reply("search_disease", {"query": "ad"}),
+                        _reply("submit_ranking", {"candidates": []}, call_id="c2")])
+    result = _run(client, tmp_path, max_tool_calls=1)
+
+    assert (result.partial, result.stop_reason) == (True, "max_tool_calls")
+    assert result.final_args == {"candidates": []}
+    assert client.requests[-1]["tool_choice"]["function"]["name"] == "submit_ranking"
+
