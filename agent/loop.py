@@ -100,8 +100,13 @@ def run_agent(*, client, agent: str, model: str, system_prompt: str, user_prompt
                 _trace(trace_path, {**step, "type": "submit", "tool": name})
                 result.final_args, result.partial, result.stop_reason = args, False, "submitted"
                 break
-            output = run_tool(name, args) if args is not None else "Error: arguments were not valid JSON"
-            result.tool_calls += 1
+            if result.tool_calls >= max_tool_calls:
+                output = "Skipped: tool-call limit reached"
+            elif args is None:
+                output = "Error: arguments were not valid JSON"
+            else:
+                output = run_tool(name, args)
+                result.tool_calls += 1
             _trace(trace_path, {**step, "type": "tool", "tool": name, "args": args, "result": output})
             messages.append({"role": "tool", "tool_call_id": call.id, "content": output})
 

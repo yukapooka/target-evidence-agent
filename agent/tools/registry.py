@@ -36,7 +36,27 @@ def _tool(name: str, description: str, properties: dict, required: list[str]) ->
     }
 
 
-ENSEMBL_ID = {"type": "string", "description": "Ensembl gene ID from a tool result, e.g. ENSG00000077238"}
+# Pydantic writes nested models as "$ref" links; some models then send nested lists as JSON strings,
+# so the submit schema is given with every "$ref" replaced by the definition it points to.
+# In:  {"$defs": {"Citation": {...}}, "properties": {"citations": {"items": {"$ref": "#/$defs/Citation"}}}}
+# Out: {"properties": {"citations": {"items": {...Citation schema...}}}}
+
+def _inline_refs(schema: dict) -> dict:
+    defs = schema.get("$defs", {})
+
+    def resolve(node):
+        if isinstance(node, dict):
+            if "$ref" in node:
+                return resolve(defs[node["$ref"].split("/")[-1]])
+            return {k: resolve(v) for k, v in node.items() if k != "$defs"}
+        if isinstance(node, list):
+            return [resolve(v) for v in node]
+        return node
+
+    return resolve(schema)
+
+
+ENSEMBL_ID ={"type": "string", "description": "Ensembl gene ID from a tool result, e.g. ENSG00000077238"}
 DISEASE_ID = {"type": "string", "description": "Open Targets disease ID from search_disease, e.g. MONDO_0004980"}
 PMID_LIST = {"type": "array", "items": {"type": "string"}, "maxItems": 10,
              "description": "PubMed IDs (digits only), at most 10 per call"}
@@ -86,7 +106,7 @@ TOOLS = [
             "name": "submit_ranking",
             "description": "Submit the final ranked candidates. Call once, when all scoring is done. "
                            "Every non-zero score must cite a record returned by a tool.",
-            "parameters": RankingResult.model_json_schema(),
+            "parameters": _inline_refs(RankingResult.model_json_schema()),
         },
     },
 ]
