@@ -16,7 +16,7 @@ Starting condition: **atopic dermatitis**. The condition is an input, so other c
 ## Architecture
 
 ```mermaid
-%%{init: {"themeVariables": {"fontSize": "16px"}, "flowchart": {"htmlLabels": false}}}%%
+%%{init: {"themeVariables": {"fontSize": "10px"}, "flowchart": {"htmlLabels": false}}}%%
 flowchart TD
     T["Tools<br/>Open Targets · PubMed<br/>GTEx skin expression"] --> R["Ranking agent<br/>LLM chooses tools<br/>rubric scores"]
     R --> D["Deterministic checks<br/>citations exist and<br/>match records"]
