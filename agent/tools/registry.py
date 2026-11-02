@@ -1,7 +1,7 @@
 """Tool registry: what the LLM is told about each tool, and how a tool call becomes a Python call.
 
 Objective:
-    Expose the Day 1 wrappers to the ranking agent in OpenAI tool-calling format, plus a submit_ranking
+    Expose the tool wrappers to the ranking agent in OpenAI tool-calling format, plus a submit_ranking
     tool for the final answer, and run whichever tool the LLM picks.
 
 Contents:

@@ -179,7 +179,7 @@ def get_known_drugs(ensembl_id: str, disease_id: str) -> list[KnownDrug]:
 
 # --- Step 5: target info and aliases ---
 # A gene's official symbol and name plus its other names, deduplicated.
-# Used on Day 3 to check whether a cited abstract really mentions the target (papers often use aliases).
+# Used by the critic to check whether a cited abstract really mentions the target (papers often use aliases).
 # In:  get_target_info("ENSG00000077238")   (IL4R)
 # Out: TargetInfo(ensembl_id="ENSG00000077238", symbol="IL4R", name="interleukin 4 receptor",
 #                 synonyms=["IL-4 receptor subunit alpha", "IL-4R-alpha", "IL-4RA", "CD124", ...])   (17 for IL4R)

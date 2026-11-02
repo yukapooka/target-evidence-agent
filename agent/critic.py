@@ -16,7 +16,7 @@ Rationale:
       and mechanism strength is left to the critic agent.
     - Abstracts about a drug often name the drug, not the target (dupilumab papers rarely say "IL4R"),
       so a known drug acting on the target counts as a mention.
-    - All lookups reuse the Day 1 wrappers, so they are cached and cheap.
+    - All lookups reuse the tool wrappers, so they are cached and cheap.
 """
 
 import re

@@ -1,0 +1,1733 @@
+{
+  "run_id": "20261101-123921-atopic-dermatitis",
+  "condition": "atopic dermatitis",
+  "n": 5,
+  "model": "anthropic/claude-haiku-5.5",
+  "prompt_version": "ranker-v3",
+  "feedback": "FLG: keep; comment: medium confidence; keep ranking it, not yet approved for validation\nIL31RA: keep; genetic_association edited 1 -> 2; comment: medium confidence; keep ranking it, not yet approved for validation. Overall Open Targets score 0.56 is a 2 under the rubric",
+  "stop_reason": "submitted",
+  "partial": false,
+  "error": null,
+  "usage": {
+    "tool_calls": 26,
+    "prompt_tokens": 143671,
+    "completion_tokens": 11959,
+    "cost": 0.0203466,
+    "runtime_s": 60.9
+  },
+  "result": {
+    "condition": "atopic dermatitis (atopic eczema)",
+    "disease_id": "MONDO_0004980",
+    "candidates": [
+      {
+        "rank": 1,
+        "symbol": "IL4R",
+        "ensembl_id": "ENSG00000077238",
+        "scores": [
+          {
+            "criterion": "genetic_association",
+            "score": 3,
+            "reason": "Open Targets overall 0.70 with genetic_association 0.60, literature 0.82 and clinical 0.98 (several evidence types, overall >0.6).",
+            "citations": [
+              {
+                "source": "opentargets_association",
+                "id": "ENSG00000077238",
+                "note": "IL4R overall 0.70; genetic 0.60, literature 0.82, clinical 0.98"
+              }
+            ]
+          },
+          {
+            "criterion": "skin_expression",
+            "score": 2,
+            "reason": "Median 27.3 TPM (lower leg) and 25.5 TPM (suprapubic) = moderate; skin ranks 28 of 51 GTEx tissues.",
+            "citations": [
+              {
+                "source": "expression",
+                "id": "ENSG00000077238",
+                "note": "Skin sun-exposed 27.3 TPM, not sun-exposed 25.5 TPM; skin rank 28/51"
+              }
+            ]
+          },
+          {
+            "criterion": "literature",
+            "score": 3,
+            "reason": "Multiple phase 3 RCTs of dupilumab (IL-4Ra antibody) in AD, including a 1-year trial and a paediatric trial.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "28478972",
+                "note": "LIBERTY AD CHRONOS phase 3: dupilumab + TCS improved IGA and EASI-75 vs placebo at week 16 and 52"
+              },
+              {
+                "source": "pmid",
+                "id": "36116481",
+                "note": "Phase 3 trial in children 6 months to <6 years: dupilumab improved IGA 0-1 and EASI-75 vs placebo"
+              }
+            ]
+          },
+          {
+            "criterion": "clinical_status",
+            "score": 3,
+            "reason": "Dupilumab is approved for AD; it acts only on IL4R (single target).",
+            "citations": [
+              {
+                "source": "opentargets_drug",
+                "id": "CHEMBL2108675",
+                "note": "Dupilumab, APPROVAL for atopic eczema, mechanism IL-4 receptor subunit alpha antagonist"
+              }
+            ]
+          },
+          {
+            "criterion": "mechanism",
+            "score": 3,
+            "reason": "IL-4Ra blockade inhibits IL-4 and IL-13 type 2 signalling; human phase 3 efficacy in AD establishes the pathway.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "28478972",
+                "note": "Dupilumab blocks IL-4/IL-13 signalling; phase 3 efficacy in moderate-to-severe AD"
+              },
+              {
+                "source": "pmid",
+                "id": "34347860",
+                "note": "Head-to-head phase 3b vs upadacitinib in adult AD; confirms clinical activity of IL-4Ra blockade"
+              }
+            ]
+          }
+        ],
+        "total_score": 14,
+        "mechanism": "IL4R (IL-4Ra) is the shared receptor subunit for IL-4 and IL-13 signalling; its blockade by dupilumab suppresses type 2 inflammation that drives AD skin lesions and itch.",
+        "mechanism_citations": [
+          {
+            "source": "pmid",
+            "id": "28478972",
+            "note": "Phase 3 dupilumab trial in AD supporting IL-4/IL-13 pathway blockade"
+          }
+        ],
+        "novelty": "known",
+        "confidence": "high",
+        "rationale": "IL4R has strong genetic and clinical evidence in AD, with the best-established human efficacy of any target here (dupilumab, multiple phase 3 trials, approved). Skin expression is moderate (about 27 TPM). Gaps: the genetic association is driven more by literature and clinical data than by genetic variants.",
+        "flags": []
+      },
+      {
+        "rank": 2,
+        "symbol": "JAK1",
+        "ensembl_id": "ENSG00000162434",
+        "scores": [
+          {
+            "criterion": "genetic_association",
+            "score": 2,
+            "reason": "Overall 0.66, but the genetic_association component is weak (0.37); strength comes mainly from literature and clinical evidence.",
+            "citations": [
+              {
+                "source": "opentargets_association",
+                "id": "ENSG00000162434",
+                "note": "JAK1 overall 0.66; genetic 0.37, literature 0.77, clinical 0.98"
+              }
+            ]
+          },
+          {
+            "criterion": "skin_expression",
+            "score": 2,
+            "reason": "Median 48.5 TPM (lower leg) and 40.2 TPM (suprapubic), moderate; skin ranks 10 of 51 tissues for JAK1 (lower leg value is close to the 50 TPM cutoff).",
+            "citations": [
+              {
+                "source": "expression",
+                "id": "ENSG00000162434",
+                "note": "Skin sun-exposed 48.5 TPM, not sun-exposed 40.2 TPM; skin rank 10/51"
+              }
+            ]
+          },
+          {
+            "criterion": "literature",
+            "score": 3,
+            "reason": "Phase 2b RCT and phase 3 RCT of the JAK1-selective inhibitor abrocitinib in AD, plus a head-to-head trial vs dupilumab.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "31577341",
+                "note": "Phase 2b RCT: abrocitinib improved IGA and EASI in moderate-to-severe AD"
+              },
+              {
+                "source": "pmid",
+                "id": "33761207",
+                "note": "Phase 3 JADE COMPARE: abrocitinib superior to placebo, comparable to dupilumab"
+              }
+            ]
+          },
+          {
+            "criterion": "clinical_status",
+            "score": 3,
+            "reason": "Abrocitinib is approved for AD and its listed mechanism is JAK1 inhibition only.",
+            "citations": [
+              {
+                "source": "opentargets_drug",
+                "id": "CHEMBL3655081",
+                "note": "Abrocitinib, APPROVAL for atopic eczema, mechanism JAK1 inhibitor"
+              }
+            ]
+          },
+          {
+            "criterion": "mechanism",
+            "score": 3,
+            "reason": "JAK1 transduces IL-4, IL-13 and other type 2 cytokine signalling; JAK1 inhibition reduces these signals in humans with AD.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "33761207",
+                "note": "Abrocitinib reduces IL-4/IL-13 signalling; phase 3 efficacy in AD"
+              },
+              {
+                "source": "pmid",
+                "id": "36839707",
+                "note": "Review of abrocitinib in AD: JAK1-selective mechanism and clinical efficacy"
+              }
+            ]
+          }
+        ],
+        "total_score": 13,
+        "mechanism": "JAK1 couples IL-4, IL-13 and IL-31 receptors to STAT signalling; selective JAK1 inhibition by abrocitinib reduces type 2 cytokine signalling and pruritus in AD.",
+        "mechanism_citations": [
+          {
+            "source": "pmid",
+            "id": "33761207",
+            "note": "Abrocitinib reduces IL-4/IL-13 signalling and improves AD in phase 3"
+          }
+        ],
+        "novelty": "known",
+        "confidence": "high",
+        "rationale": "JAK1 has strong clinical and literature evidence in AD, including two phase 2/3 trials and an approved selective JAK1 drug. Its genetic association is weak, and its overall association score is driven mostly by literature and clinical data. Expression is moderate.",
+        "flags": []
+      },
+      {
+        "rank": 3,
+        "symbol": "IL13",
+        "ensembl_id": "ENSG00000169194",
+        "scores": [
+          {
+            "criterion": "genetic_association",
+            "score": 3,
+            "reason": "Overall 0.75 with genetic_association 0.93, literature 0.97 and clinical 0.98 (several evidence types, overall >0.6).",
+            "citations": [
+              {
+                "source": "opentargets_association",
+                "id": "ENSG00000169194",
+                "note": "IL13 overall 0.75; genetic 0.93, literature 0.97, clinical 0.98"
+              }
+            ]
+          },
+          {
+            "criterion": "skin_expression",
+            "score": 0,
+            "reason": "Median 0.08 TPM (lower leg) and 0.07 TPM (suprapubic), below 1 TPM. Not informative: IL-13 is a secreted cytokine and bulk skin TPM underestimates its role in AD.",
+            "citations": [
+              {
+                "source": "expression",
+                "id": "ENSG00000169194",
+                "note": "Skin sun-exposed 0.085 TPM, not sun-exposed 0.070 TPM"
+              }
+            ]
+          },
+          {
+            "criterion": "literature",
+            "score": 3,
+            "reason": "Multiple phase 3 RCTs of lebrikizumab (anti-IL-13) in AD, with biomarker and subgroup follow-up.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "40663228",
+                "note": "Lebrikizumab (ADvocate1/2 biomarker analysis): IL-13 blockade lowered CCL13, CCL17, CCL22 and periostin and correlated with clinical improvement"
+              },
+              {
+                "source": "pmid",
+                "id": "38735650",
+                "note": "Phase 3 ADvocate/ADhere adolescent analysis: lebrikizumab improved IGA and EASI-75 vs placebo at week 16"
+              }
+            ]
+          },
+          {
+            "criterion": "clinical_status",
+            "score": 3,
+            "reason": "Lebrikizumab and tralokinumab are approved for AD; both act only on IL13.",
+            "citations": [
+              {
+                "source": "opentargets_drug",
+                "id": "CHEMBL1743035",
+                "note": "Lebrikizumab, APPROVAL for atopic eczema, mechanism IL-13 inhibitor"
+              },
+              {
+                "source": "opentargets_drug",
+                "id": "CHEMBL1743081",
+                "note": "Tralokinumab, APPROVAL for atopic eczema, mechanism IL-13 inhibitor"
+              }
+            ]
+          },
+          {
+            "criterion": "mechanism",
+            "score": 3,
+            "reason": "IL-13 drives epidermal barrier dysfunction, Th2 inflammation and pruritus in AD; selective IL-13 blockade has clinical efficacy in humans.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "40663228",
+                "note": "Selective IL-13 blockade suppresses type 2 biomarkers and correlates with clinical response in AD"
+              },
+              {
+                "source": "pmid",
+                "id": "40990093",
+                "note": "Review: tralokinumab and lebrikizumab selectively block IL-13 with clinical benefit in AD"
+              }
+            ]
+          }
+        ],
+        "total_score": 12,
+        "mechanism": "IL-13 is a central type 2 cytokine that drives keratinocyte barrier dysfunction, chemokine release (CCL17, CCL22, CCL26) and itch in AD; selective IL-13 antibodies reduce these pathways in patients.",
+        "mechanism_citations": [
+          {
+            "source": "pmid",
+            "id": "40663228",
+            "note": "Lebrikizumab reduces IL-13-driven chemokines and periostin in AD patients"
+          }
+        ],
+        "novelty": "known",
+        "confidence": "high",
+        "rationale": "IL13 has strong genetic, literature and clinical evidence in AD, with two approved selective anti-IL-13 antibodies. Bulk skin TPM is very low (0.08 TPM) but this is not informative for a secreted cytokine, so skin expression scores 0 as measured. The score is lower than IL4R and JAK1 only because of this expression score.",
+        "flags": [
+          "skin_expression scored 0 on measured TPM; secreted cytokine, low bulk skin TPM not informative"
+        ]
+      },
+      {
+        "rank": 4,
+        "symbol": "IL31RA",
+        "ensembl_id": "ENSG00000164509",
+        "scores": [
+          {
+            "criterion": "genetic_association",
+            "score": 2,
+            "reason": "Overall 0.56 (below the 0.6 threshold for score 3), with literature 0.37 and clinical 0.90; moderate, per reviewer note and rubric.",
+            "citations": [
+              {
+                "source": "opentargets_association",
+                "id": "ENSG00000164509",
+                "note": "IL31RA overall 0.56; literature 0.37, clinical 0.90"
+              }
+            ]
+          },
+          {
+            "criterion": "skin_expression",
+            "score": 1,
+            "reason": "Median 0.68 TPM (lower leg) and 0.61 TPM (suprapubic), in the 1 TPM range or below. Skin is ranked 3 of 51 tissues for this gene, which would score 3 under the rubric's top-10 rule, so the two rules conflict; I scored on the TPM value.",
+            "citations": [
+              {
+                "source": "expression",
+                "id": "ENSG00000164509",
+                "note": "Skin sun-exposed 0.68 TPM, not sun-exposed 0.61 TPM; skin rank 3/51"
+              }
+            ]
+          },
+          {
+            "criterion": "literature",
+            "score": 3,
+            "reason": "Two replicate phase 3 RCTs (ARCADIA 1 and 2) of nemolizumab, an anti-IL-31RA antibody, in AD.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "39067461",
+                "note": "ARCADIA 1 and 2 phase 3: nemolizumab improved IGA and EASI-75 and itch vs placebo at week 16"
+              }
+            ]
+          },
+          {
+            "criterion": "clinical_status",
+            "score": 3,
+            "reason": "Nemolizumab is approved for AD and acts only on IL31RA.",
+            "citations": [
+              {
+                "source": "opentargets_drug",
+                "id": "CHEMBL4297794",
+                "note": "Nemolizumab, APPROVAL for atopic eczema, mechanism IL-31 receptor subunit alpha inhibitor"
+              }
+            ]
+          },
+          {
+            "criterion": "mechanism",
+            "score": 3,
+            "reason": "IL-31 from Th2 cells activates sensory neurons to drive pruritus; nemolizumab blockade reduces itch and skin inflammation in human phase 3 trials.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "39067461",
+                "note": "Phase 3 nemolizumab: itch and skin inflammation improved in AD"
+              },
+              {
+                "source": "pmid",
+                "id": "41155460",
+                "note": "Review of the IL-31/IL-33 axis: IL-31 from Th2 cells drives pruritus and barrier impairment in AD"
+              }
+            ]
+          }
+        ],
+        "total_score": 12,
+        "mechanism": "IL-31 released mainly by Th2 cells acts through IL-31RA on sensory neurons to drive itch, and also impairs keratinocyte differentiation; nemolizumab blocks this axis.",
+        "mechanism_citations": [
+          {
+            "source": "pmid",
+            "id": "41155460",
+            "note": "IL-31 from Th2 cells activates sensory neurons and worsens barrier function in AD"
+          },
+          {
+            "source": "pmid",
+            "id": "39067461",
+            "note": "Nemolizumab phase 3 efficacy on pruritus and AD in humans"
+          }
+        ],
+        "novelty": "known",
+        "confidence": "medium",
+        "rationale": "IL31RA has phase 3 and approval evidence in AD via nemolizumab, which is a single-target drug. Its overall Open Targets score (0.56) is moderate, and its genetic evidence is weaker than the top targets. Skin TPM is very low (0.68), though skin ranks 3 of 51 tissues for this gene, so the expression score is a judgement call.",
+        "flags": [
+          "skin_expression: TPM below 1, but skin rank 3/51 would score 3 under the top-10 rule; scored 1 on TPM",
+          "critic: skin_expression partial (TPM is below 1 (score 0), and skin rank 3 suggests 3; score 1 fits neither tier.)"
+        ]
+      },
+      {
+        "rank": 5,
+        "symbol": "FLG",
+        "ensembl_id": "ENSG00000143631",
+        "scores": [
+          {
+            "criterion": "genetic_association",
+            "score": 3,
+            "reason": "Overall 0.84, with genetic_association 0.95, literature 0.98 and genetic_literature 0.73 (several evidence types, overall >0.6).",
+            "citations": [
+              {
+                "source": "opentargets_association",
+                "id": "ENSG00000143631",
+                "note": "FLG overall 0.84; genetic 0.95, literature 0.98, genetic_literature 0.73"
+              }
+            ]
+          },
+          {
+            "criterion": "skin_expression",
+            "score": 3,
+            "reason": "Median 459 TPM (lower leg) and 248 TPM (suprapubic); skin ranks 1 of 51 tissues.",
+            "citations": [
+              {
+                "source": "expression",
+                "id": "ENSG00000143631",
+                "note": "Skin sun-exposed 458.6 TPM, not sun-exposed 247.6 TPM; skin rank 1/51"
+              }
+            ]
+          },
+          {
+            "criterion": "literature",
+            "score": 3,
+            "reason": "Foundational human genetic study: two independent loss-of-function FLG variants are strong predisposing factors for AD. Multiple further reviews support this.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "16550169",
+                "note": "Nature Genetics: FLG R510X and 2282del4 loss-of-function variants strongly predispose to AD"
+              },
+              {
+                "source": "pmid",
+                "id": "29063428",
+                "note": "Review: FLG loss-of-function linked to severe AD via barrier dysfunction"
+              }
+            ]
+          },
+          {
+            "criterion": "clinical_status",
+            "score": 0,
+            "reason": "No drug tested for AD against FLG in get_known_drugs (empty list).",
+            "citations": []
+          },
+          {
+            "criterion": "mechanism",
+            "score": 3,
+            "reason": "Filaggrin is essential for epidermal barrier formation; loss-of-function variants cause barrier defects that let allergens and microbes penetrate and drive Th2 sensitisation, with direct human genetic evidence in AD.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "16550169",
+                "note": "Human LoF FLG variants predispose to AD, establishing barrier loss as a causal mechanism"
+              },
+              {
+                "source": "pmid",
+                "id": "34344611",
+                "note": "Review: FLG mutations are a major feature of extrinsic AD with barrier impairment"
+              }
+            ]
+          }
+        ],
+        "total_score": 12,
+        "mechanism": "Filaggrin is required for terminal epidermal differentiation and natural moisturising factor production; loss-of-function variants impair the skin barrier, increasing allergen penetration and Th2 sensitisation in AD.",
+        "mechanism_citations": [
+          {
+            "source": "pmid",
+            "id": "16550169",
+            "note": "FLG loss-of-function variants are a major predisposing factor for AD"
+          }
+        ],
+        "novelty": "less_explored",
+        "confidence": "medium",
+        "rationale": "FLG has the strongest genetic evidence and the highest skin expression of any candidate, with a foundational human genetic study (PMID 16550169). It has no drug tested in AD, so clinical status scores 0, and the target is a structural protein not directly druggable. It is ranked for its strong genetic and mechanistic evidence. Its position reflects clinical scoring, not evidence quality. Confidence is medium because the direct therapeutic route is unclear. Tested genes, such as TYK2 (clinical 2, weak AD-specific literature), were not ranked in the top 5.",
+        "flags": [
+          "no clinical drug for AD; therapeutic tractability unclear",
+          "critic: literature partial (Cites only one primary human study alongside a narrative review, not meeting multiple human studies.)",
+          "critic: confidence too high (Lack of clinical drugs and tractability challenges for a structural loss-of-function protein warrant low confidence.)"
+        ]
+      }
+    ],
+    "partial": false
+  },
+  "raw_answer": null,
+  "ranker_result": {
+    "condition": "atopic dermatitis (atopic eczema)",
+    "disease_id": "MONDO_0004980",
+    "candidates": [
+      {
+        "rank": 1,
+        "symbol": "IL4R",
+        "ensembl_id": "ENSG00000077238",
+        "scores": [
+          {
+            "criterion": "genetic_association",
+            "score": 3,
+            "reason": "Open Targets overall 0.70 with genetic_association 0.60, literature 0.82 and clinical 0.98 (several evidence types, overall >0.6).",
+            "citations": [
+              {
+                "source": "opentargets_association",
+                "id": "ENSG00000077238",
+                "note": "IL4R overall 0.70; genetic 0.60, literature 0.82, clinical 0.98"
+              }
+            ]
+          },
+          {
+            "criterion": "skin_expression",
+            "score": 2,
+            "reason": "Median 27.3 TPM (lower leg) and 25.5 TPM (suprapubic) = moderate; skin ranks 28 of 51 GTEx tissues.",
+            "citations": [
+              {
+                "source": "expression",
+                "id": "ENSG00000077238",
+                "note": "Skin sun-exposed 27.3 TPM, not sun-exposed 25.5 TPM; skin rank 28/51"
+              }
+            ]
+          },
+          {
+            "criterion": "literature",
+            "score": 3,
+            "reason": "Multiple phase 3 RCTs of dupilumab (IL-4Ra antibody) in AD, including a 1-year trial and a paediatric trial.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "28478972",
+                "note": "LIBERTY AD CHRONOS phase 3: dupilumab + TCS improved IGA and EASI-75 vs placebo at week 16 and 52"
+              },
+              {
+                "source": "pmid",
+                "id": "36116481",
+                "note": "Phase 3 trial in children 6 months to <6 years: dupilumab improved IGA 0-1 and EASI-75 vs placebo"
+              }
+            ]
+          },
+          {
+            "criterion": "clinical_status",
+            "score": 3,
+            "reason": "Dupilumab is approved for AD; it acts only on IL4R (single target).",
+            "citations": [
+              {
+                "source": "opentargets_drug",
+                "id": "CHEMBL2108675",
+                "note": "Dupilumab, APPROVAL for atopic eczema, mechanism IL-4 receptor subunit alpha antagonist"
+              }
+            ]
+          },
+          {
+            "criterion": "mechanism",
+            "score": 3,
+            "reason": "IL-4Ra blockade inhibits IL-4 and IL-13 type 2 signalling; human phase 3 efficacy in AD establishes the pathway.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "28478972",
+                "note": "Dupilumab blocks IL-4/IL-13 signalling; phase 3 efficacy in moderate-to-severe AD"
+              },
+              {
+                "source": "pmid",
+                "id": "34347860",
+                "note": "Head-to-head phase 3b vs upadacitinib in adult AD; confirms clinical activity of IL-4Ra blockade"
+              }
+            ]
+          }
+        ],
+        "total_score": 14,
+        "mechanism": "IL4R (IL-4Ra) is the shared receptor subunit for IL-4 and IL-13 signalling; its blockade by dupilumab suppresses type 2 inflammation that drives AD skin lesions and itch.",
+        "mechanism_citations": [
+          {
+            "source": "pmid",
+            "id": "28478972",
+            "note": "Phase 3 dupilumab trial in AD supporting IL-4/IL-13 pathway blockade"
+          }
+        ],
+        "novelty": "known",
+        "confidence": "high",
+        "rationale": "IL4R has strong genetic and clinical evidence in AD, with the best-established human efficacy of any target here (dupilumab, multiple phase 3 trials, approved). Skin expression is moderate (about 27 TPM). Gaps: the genetic association is driven more by literature and clinical data than by genetic variants.",
+        "flags": []
+      },
+      {
+        "rank": 2,
+        "symbol": "JAK1",
+        "ensembl_id": "ENSG00000162434",
+        "scores": [
+          {
+            "criterion": "genetic_association",
+            "score": 2,
+            "reason": "Overall 0.66, but the genetic_association component is weak (0.37); strength comes mainly from literature and clinical evidence.",
+            "citations": [
+              {
+                "source": "opentargets_association",
+                "id": "ENSG00000162434",
+                "note": "JAK1 overall 0.66; genetic 0.37, literature 0.77, clinical 0.98"
+              }
+            ]
+          },
+          {
+            "criterion": "skin_expression",
+            "score": 2,
+            "reason": "Median 48.5 TPM (lower leg) and 40.2 TPM (suprapubic), moderate; skin ranks 10 of 51 tissues for JAK1 (lower leg value is close to the 50 TPM cutoff).",
+            "citations": [
+              {
+                "source": "expression",
+                "id": "ENSG00000162434",
+                "note": "Skin sun-exposed 48.5 TPM, not sun-exposed 40.2 TPM; skin rank 10/51"
+              }
+            ]
+          },
+          {
+            "criterion": "literature",
+            "score": 3,
+            "reason": "Phase 2b RCT and phase 3 RCT of the JAK1-selective inhibitor abrocitinib in AD, plus a head-to-head trial vs dupilumab.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "31577341",
+                "note": "Phase 2b RCT: abrocitinib improved IGA and EASI in moderate-to-severe AD"
+              },
+              {
+                "source": "pmid",
+                "id": "33761207",
+                "note": "Phase 3 JADE COMPARE: abrocitinib superior to placebo, comparable to dupilumab"
+              }
+            ]
+          },
+          {
+            "criterion": "clinical_status",
+            "score": 3,
+            "reason": "Abrocitinib is approved for AD and its listed mechanism is JAK1 inhibition only.",
+            "citations": [
+              {
+                "source": "opentargets_drug",
+                "id": "CHEMBL3655081",
+                "note": "Abrocitinib, APPROVAL for atopic eczema, mechanism JAK1 inhibitor"
+              }
+            ]
+          },
+          {
+            "criterion": "mechanism",
+            "score": 3,
+            "reason": "JAK1 transduces IL-4, IL-13 and other type 2 cytokine signalling; JAK1 inhibition reduces these signals in humans with AD.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "33761207",
+                "note": "Abrocitinib reduces IL-4/IL-13 signalling; phase 3 efficacy in AD"
+              },
+              {
+                "source": "pmid",
+                "id": "36839707",
+                "note": "Review of abrocitinib in AD: JAK1-selective mechanism and clinical efficacy"
+              }
+            ]
+          }
+        ],
+        "total_score": 13,
+        "mechanism": "JAK1 couples IL-4, IL-13 and IL-31 receptors to STAT signalling; selective JAK1 inhibition by abrocitinib reduces type 2 cytokine signalling and pruritus in AD.",
+        "mechanism_citations": [
+          {
+            "source": "pmid",
+            "id": "33761207",
+            "note": "Abrocitinib reduces IL-4/IL-13 signalling and improves AD in phase 3"
+          }
+        ],
+        "novelty": "known",
+        "confidence": "high",
+        "rationale": "JAK1 has strong clinical and literature evidence in AD, including two phase 2/3 trials and an approved selective JAK1 drug. Its genetic association is weak, and its overall association score is driven mostly by literature and clinical data. Expression is moderate.",
+        "flags": []
+      },
+      {
+        "rank": 3,
+        "symbol": "IL13",
+        "ensembl_id": "ENSG00000169194",
+        "scores": [
+          {
+            "criterion": "genetic_association",
+            "score": 3,
+            "reason": "Overall 0.75 with genetic_association 0.93, literature 0.97 and clinical 0.98 (several evidence types, overall >0.6).",
+            "citations": [
+              {
+                "source": "opentargets_association",
+                "id": "ENSG00000169194",
+                "note": "IL13 overall 0.75; genetic 0.93, literature 0.97, clinical 0.98"
+              }
+            ]
+          },
+          {
+            "criterion": "skin_expression",
+            "score": 0,
+            "reason": "Median 0.08 TPM (lower leg) and 0.07 TPM (suprapubic), below 1 TPM. Not informative: IL-13 is a secreted cytokine and bulk skin TPM underestimates its role in AD.",
+            "citations": [
+              {
+                "source": "expression",
+                "id": "ENSG00000169194",
+                "note": "Skin sun-exposed 0.085 TPM, not sun-exposed 0.070 TPM"
+              }
+            ]
+          },
+          {
+            "criterion": "literature",
+            "score": 3,
+            "reason": "Multiple phase 3 RCTs of lebrikizumab (anti-IL-13) in AD, with biomarker and subgroup follow-up.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "40663228",
+                "note": "Lebrikizumab (ADvocate1/2 biomarker analysis): IL-13 blockade lowered CCL13, CCL17, CCL22 and periostin and correlated with clinical improvement"
+              },
+              {
+                "source": "pmid",
+                "id": "38735650",
+                "note": "Phase 3 ADvocate/ADhere adolescent analysis: lebrikizumab improved IGA and EASI-75 vs placebo at week 16"
+              }
+            ]
+          },
+          {
+            "criterion": "clinical_status",
+            "score": 3,
+            "reason": "Lebrikizumab and tralokinumab are approved for AD; both act only on IL13.",
+            "citations": [
+              {
+                "source": "opentargets_drug",
+                "id": "CHEMBL1743035",
+                "note": "Lebrikizumab, APPROVAL for atopic eczema, mechanism IL-13 inhibitor"
+              },
+              {
+                "source": "opentargets_drug",
+                "id": "CHEMBL1743081",
+                "note": "Tralokinumab, APPROVAL for atopic eczema, mechanism IL-13 inhibitor"
+              }
+            ]
+          },
+          {
+            "criterion": "mechanism",
+            "score": 3,
+            "reason": "IL-13 drives epidermal barrier dysfunction, Th2 inflammation and pruritus in AD; selective IL-13 blockade has clinical efficacy in humans.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "40663228",
+                "note": "Selective IL-13 blockade suppresses type 2 biomarkers and correlates with clinical response in AD"
+              },
+              {
+                "source": "pmid",
+                "id": "40990093",
+                "note": "Review: tralokinumab and lebrikizumab selectively block IL-13 with clinical benefit in AD"
+              }
+            ]
+          }
+        ],
+        "total_score": 12,
+        "mechanism": "IL-13 is a central type 2 cytokine that drives keratinocyte barrier dysfunction, chemokine release (CCL17, CCL22, CCL26) and itch in AD; selective IL-13 antibodies reduce these pathways in patients.",
+        "mechanism_citations": [
+          {
+            "source": "pmid",
+            "id": "40663228",
+            "note": "Lebrikizumab reduces IL-13-driven chemokines and periostin in AD patients"
+          }
+        ],
+        "novelty": "known",
+        "confidence": "high",
+        "rationale": "IL13 has strong genetic, literature and clinical evidence in AD, with two approved selective anti-IL-13 antibodies. Bulk skin TPM is very low (0.08 TPM) but this is not informative for a secreted cytokine, so skin expression scores 0 as measured. The score is lower than IL4R and JAK1 only because of this expression score.",
+        "flags": [
+          "skin_expression scored 0 on measured TPM; secreted cytokine, low bulk skin TPM not informative"
+        ]
+      },
+      {
+        "rank": 4,
+        "symbol": "IL31RA",
+        "ensembl_id": "ENSG00000164509",
+        "scores": [
+          {
+            "criterion": "genetic_association",
+            "score": 2,
+            "reason": "Overall 0.56 (below the 0.6 threshold for score 3), with literature 0.37 and clinical 0.90; moderate, per reviewer note and rubric.",
+            "citations": [
+              {
+                "source": "opentargets_association",
+                "id": "ENSG00000164509",
+                "note": "IL31RA overall 0.56; literature 0.37, clinical 0.90"
+              }
+            ]
+          },
+          {
+            "criterion": "skin_expression",
+            "score": 1,
+            "reason": "Median 0.68 TPM (lower leg) and 0.61 TPM (suprapubic), in the 1 TPM range or below. Skin is ranked 3 of 51 tissues for this gene, which would score 3 under the rubric's top-10 rule, so the two rules conflict; I scored on the TPM value.",
+            "citations": [
+              {
+                "source": "expression",
+                "id": "ENSG00000164509",
+                "note": "Skin sun-exposed 0.68 TPM, not sun-exposed 0.61 TPM; skin rank 3/51"
+              }
+            ]
+          },
+          {
+            "criterion": "literature",
+            "score": 3,
+            "reason": "Two replicate phase 3 RCTs (ARCADIA 1 and 2) of nemolizumab, an anti-IL-31RA antibody, in AD.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "39067461",
+                "note": "ARCADIA 1 and 2 phase 3: nemolizumab improved IGA and EASI-75 and itch vs placebo at week 16"
+              }
+            ]
+          },
+          {
+            "criterion": "clinical_status",
+            "score": 3,
+            "reason": "Nemolizumab is approved for AD and acts only on IL31RA.",
+            "citations": [
+              {
+                "source": "opentargets_drug",
+                "id": "CHEMBL4297794",
+                "note": "Nemolizumab, APPROVAL for atopic eczema, mechanism IL-31 receptor subunit alpha inhibitor"
+              }
+            ]
+          },
+          {
+            "criterion": "mechanism",
+            "score": 3,
+            "reason": "IL-31 from Th2 cells activates sensory neurons to drive pruritus; nemolizumab blockade reduces itch and skin inflammation in human phase 3 trials.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "39067461",
+                "note": "Phase 3 nemolizumab: itch and skin inflammation improved in AD"
+              },
+              {
+                "source": "pmid",
+                "id": "41155460",
+                "note": "Review of the IL-31/IL-33 axis: IL-31 from Th2 cells drives pruritus and barrier impairment in AD"
+              }
+            ]
+          }
+        ],
+        "total_score": 12,
+        "mechanism": "IL-31 released mainly by Th2 cells acts through IL-31RA on sensory neurons to drive itch, and also impairs keratinocyte differentiation; nemolizumab blocks this axis.",
+        "mechanism_citations": [
+          {
+            "source": "pmid",
+            "id": "41155460",
+            "note": "IL-31 from Th2 cells activates sensory neurons and worsens barrier function in AD"
+          },
+          {
+            "source": "pmid",
+            "id": "39067461",
+            "note": "Nemolizumab phase 3 efficacy on pruritus and AD in humans"
+          }
+        ],
+        "novelty": "known",
+        "confidence": "medium",
+        "rationale": "IL31RA has phase 3 and approval evidence in AD via nemolizumab, which is a single-target drug. Its overall Open Targets score (0.56) is moderate, and its genetic evidence is weaker than the top targets. Skin TPM is very low (0.68), though skin ranks 3 of 51 tissues for this gene, so the expression score is a judgement call.",
+        "flags": [
+          "skin_expression: TPM below 1, but skin rank 3/51 would score 3 under the top-10 rule; scored 1 on TPM"
+        ]
+      },
+      {
+        "rank": 5,
+        "symbol": "FLG",
+        "ensembl_id": "ENSG00000143631",
+        "scores": [
+          {
+            "criterion": "genetic_association",
+            "score": 3,
+            "reason": "Overall 0.84, with genetic_association 0.95, literature 0.98 and genetic_literature 0.73 (several evidence types, overall >0.6).",
+            "citations": [
+              {
+                "source": "opentargets_association",
+                "id": "ENSG00000143631",
+                "note": "FLG overall 0.84; genetic 0.95, literature 0.98, genetic_literature 0.73"
+              }
+            ]
+          },
+          {
+            "criterion": "skin_expression",
+            "score": 3,
+            "reason": "Median 459 TPM (lower leg) and 248 TPM (suprapubic); skin ranks 1 of 51 tissues.",
+            "citations": [
+              {
+                "source": "expression",
+                "id": "ENSG00000143631",
+                "note": "Skin sun-exposed 458.6 TPM, not sun-exposed 247.6 TPM; skin rank 1/51"
+              }
+            ]
+          },
+          {
+            "criterion": "literature",
+            "score": 3,
+            "reason": "Foundational human genetic study: two independent loss-of-function FLG variants are strong predisposing factors for AD. Multiple further reviews support this.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "16550169",
+                "note": "Nature Genetics: FLG R510X and 2282del4 loss-of-function variants strongly predispose to AD"
+              },
+              {
+                "source": "pmid",
+                "id": "29063428",
+                "note": "Review: FLG loss-of-function linked to severe AD via barrier dysfunction"
+              }
+            ]
+          },
+          {
+            "criterion": "clinical_status",
+            "score": 0,
+            "reason": "No drug tested for AD against FLG in get_known_drugs (empty list).",
+            "citations": []
+          },
+          {
+            "criterion": "mechanism",
+            "score": 3,
+            "reason": "Filaggrin is essential for epidermal barrier formation; loss-of-function variants cause barrier defects that let allergens and microbes penetrate and drive Th2 sensitisation, with direct human genetic evidence in AD.",
+            "citations": [
+              {
+                "source": "pmid",
+                "id": "16550169",
+                "note": "Human LoF FLG variants predispose to AD, establishing barrier loss as a causal mechanism"
+              },
+              {
+                "source": "pmid",
+                "id": "34344611",
+                "note": "Review: FLG mutations are a major feature of extrinsic AD with barrier impairment"
+              }
+            ]
+          }
+        ],
+        "total_score": 12,
+        "mechanism": "Filaggrin is required for terminal epidermal differentiation and natural moisturising factor production; loss-of-function variants impair the skin barrier, increasing allergen penetration and Th2 sensitisation in AD.",
+        "mechanism_citations": [
+          {
+            "source": "pmid",
+            "id": "16550169",
+            "note": "FLG loss-of-function variants are a major predisposing factor for AD"
+          }
+        ],
+        "novelty": "less_explored",
+        "confidence": "medium",
+        "rationale": "FLG has the strongest genetic evidence and the highest skin expression of any candidate, with a foundational human genetic study (PMID 16550169). It has no drug tested in AD, so clinical status scores 0, and the target is a structural protein not directly druggable. It is ranked for its strong genetic and mechanistic evidence. Its position reflects clinical scoring, not evidence quality. Confidence is medium because the direct therapeutic route is unclear. Tested genes, such as TYK2 (clinical 2, weak AD-specific literature), were not ranked in the top 5.",
+        "flags": [
+          "no clinical drug for AD; therapeutic tractability unclear"
+        ]
+      }
+    ],
+    "partial": false
+  },
+  "critic": {
+    "model": "google/gemini-3.8-flash",
+    "prompt_version": "critic-v3",
+    "reasoning_effort": null,
+    "stop_reason": "submitted",
+    "partial": false,
+    "error": null,
+    "usage": {
+      "tool_calls": 13,
+      "prompt_tokens": 27702,
+      "completion_tokens": 20041,
+      "cost": 0.09593025,
+      "runtime_s": 108.4
+    },
+    "checks": [
+      {
+        "symbol": "IL4R",
+        "criterion": null,
+        "citation_id": "ENSG00000077238",
+        "check": "target_matches",
+        "passed": true,
+        "detail": "IL4R",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "JAK1",
+        "criterion": null,
+        "citation_id": "ENSG00000162434",
+        "check": "target_matches",
+        "passed": true,
+        "detail": "JAK1",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL13",
+        "criterion": null,
+        "citation_id": "ENSG00000169194",
+        "check": "target_matches",
+        "passed": true,
+        "detail": "IL13",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL31RA",
+        "criterion": null,
+        "citation_id": "ENSG00000164509",
+        "check": "target_matches",
+        "passed": true,
+        "detail": "IL31RA",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "FLG",
+        "criterion": null,
+        "citation_id": "ENSG00000143631",
+        "check": "target_matches",
+        "passed": true,
+        "detail": "FLG",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL4R",
+        "criterion": "literature",
+        "citation_id": "28478972",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions DUPILUMAB",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL4R",
+        "criterion": "literature",
+        "citation_id": "36116481",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions DUPILUMAB",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL4R",
+        "criterion": "mechanism",
+        "citation_id": "28478972",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions DUPILUMAB",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL4R",
+        "criterion": "mechanism",
+        "citation_id": "34347860",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions DUPILUMAB",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL4R",
+        "criterion": "mechanism_statement",
+        "citation_id": "28478972",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions DUPILUMAB",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "JAK1",
+        "criterion": "literature",
+        "citation_id": "31577341",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions Janus kinase 1",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "JAK1",
+        "criterion": "literature",
+        "citation_id": "33761207",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions JAK1",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "JAK1",
+        "criterion": "mechanism",
+        "citation_id": "33761207",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions JAK1",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "JAK1",
+        "criterion": "mechanism",
+        "citation_id": "36839707",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions JAK1",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "JAK1",
+        "criterion": "mechanism_statement",
+        "citation_id": "33761207",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions JAK1",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL13",
+        "criterion": "literature",
+        "citation_id": "40663228",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions IL13",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL13",
+        "criterion": "literature",
+        "citation_id": "38735650",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions IL13",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL13",
+        "criterion": "mechanism",
+        "citation_id": "40663228",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions IL13",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL13",
+        "criterion": "mechanism",
+        "citation_id": "40990093",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions IL13",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL13",
+        "criterion": "mechanism_statement",
+        "citation_id": "40663228",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions IL13",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL31RA",
+        "criterion": "literature",
+        "citation_id": "39067461",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions NEMOLIZUMAB",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL31RA",
+        "criterion": "mechanism",
+        "citation_id": "39067461",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions NEMOLIZUMAB",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL31RA",
+        "criterion": "mechanism",
+        "citation_id": "41155460",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions NEMOLIZUMAB",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL31RA",
+        "criterion": "mechanism_statement",
+        "citation_id": "41155460",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions NEMOLIZUMAB",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL31RA",
+        "criterion": "mechanism_statement",
+        "citation_id": "39067461",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions NEMOLIZUMAB",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "FLG",
+        "criterion": "literature",
+        "citation_id": "16550169",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions FLG",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "FLG",
+        "criterion": "literature",
+        "citation_id": "29063428",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions Filaggrin",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "FLG",
+        "criterion": "mechanism",
+        "citation_id": "16550169",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions FLG",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "FLG",
+        "criterion": "mechanism",
+        "citation_id": "34344611",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions Filaggrin",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "FLG",
+        "criterion": "mechanism_statement",
+        "citation_id": "16550169",
+        "check": "pmid_mentions_target",
+        "passed": true,
+        "detail": "mentions FLG",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL4R",
+        "criterion": "genetic_association",
+        "citation_id": "ENSG00000077238",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL4R",
+        "criterion": "skin_expression",
+        "citation_id": "ENSG00000077238",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL4R",
+        "criterion": "clinical_status",
+        "citation_id": "CHEMBL2108675",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL4R",
+        "criterion": "genetic_association",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 3, record supports up to 3",
+        "max_score": 3,
+        "annotation": false
+      },
+      {
+        "symbol": "IL4R",
+        "criterion": "skin_expression",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 2, record supports up to 2",
+        "max_score": 2,
+        "annotation": false
+      },
+      {
+        "symbol": "IL4R",
+        "criterion": "clinical_status",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 3, record supports up to 3",
+        "max_score": 3,
+        "annotation": false
+      },
+      {
+        "symbol": "JAK1",
+        "criterion": "genetic_association",
+        "citation_id": "ENSG00000162434",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "JAK1",
+        "criterion": "skin_expression",
+        "citation_id": "ENSG00000162434",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "JAK1",
+        "criterion": "clinical_status",
+        "citation_id": "CHEMBL3655081",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "JAK1",
+        "criterion": "genetic_association",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 2, record supports up to 3",
+        "max_score": 3,
+        "annotation": false
+      },
+      {
+        "symbol": "JAK1",
+        "criterion": "skin_expression",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 2, record supports up to 3",
+        "max_score": 3,
+        "annotation": false
+      },
+      {
+        "symbol": "JAK1",
+        "criterion": "clinical_status",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 3, record supports up to 3",
+        "max_score": 3,
+        "annotation": false
+      },
+      {
+        "symbol": "IL13",
+        "criterion": "genetic_association",
+        "citation_id": "ENSG00000169194",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL13",
+        "criterion": "skin_expression",
+        "citation_id": "ENSG00000169194",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL13",
+        "criterion": "clinical_status",
+        "citation_id": "CHEMBL1743035",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL13",
+        "criterion": "clinical_status",
+        "citation_id": "CHEMBL1743081",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL13",
+        "criterion": "genetic_association",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 3, record supports up to 3",
+        "max_score": 3,
+        "annotation": false
+      },
+      {
+        "symbol": "IL13",
+        "criterion": "clinical_status",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 3, record supports up to 3",
+        "max_score": 3,
+        "annotation": false
+      },
+      {
+        "symbol": "IL31RA",
+        "criterion": "genetic_association",
+        "citation_id": "ENSG00000164509",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL31RA",
+        "criterion": "skin_expression",
+        "citation_id": "ENSG00000164509",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL31RA",
+        "criterion": "clinical_status",
+        "citation_id": "CHEMBL4297794",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "IL31RA",
+        "criterion": "genetic_association",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 2, record supports up to 2",
+        "max_score": 2,
+        "annotation": false
+      },
+      {
+        "symbol": "IL31RA",
+        "criterion": "skin_expression",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 1, record supports up to 3",
+        "max_score": 3,
+        "annotation": false
+      },
+      {
+        "symbol": "IL31RA",
+        "criterion": "clinical_status",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 3, record supports up to 3",
+        "max_score": 3,
+        "annotation": false
+      },
+      {
+        "symbol": "FLG",
+        "criterion": "genetic_association",
+        "citation_id": "ENSG00000143631",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "FLG",
+        "criterion": "skin_expression",
+        "citation_id": "ENSG00000143631",
+        "check": "record_matches",
+        "passed": true,
+        "detail": "record found",
+        "max_score": null,
+        "annotation": false
+      },
+      {
+        "symbol": "FLG",
+        "criterion": "genetic_association",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 3, record supports up to 3",
+        "max_score": 3,
+        "annotation": false
+      },
+      {
+        "symbol": "FLG",
+        "criterion": "skin_expression",
+        "citation_id": null,
+        "check": "score_within_record",
+        "passed": true,
+        "detail": "score 3, record supports up to 3",
+        "max_score": 3,
+        "annotation": false
+      }
+    ],
+    "report": {
+      "verdicts": [
+        {
+          "symbol": "IL4R",
+          "criterion": "genetic_association",
+          "verdict": "supported",
+          "reason": "Open Targets overall score is 0.70 with strong clinical, literature, and genetic association scores."
+        },
+        {
+          "symbol": "IL4R",
+          "criterion": "skin_expression",
+          "verdict": "supported",
+          "reason": "GTEx skin expression is 25.5 to 27.3 TPM, fitting the moderate 10-50 TPM range."
+        },
+        {
+          "symbol": "IL4R",
+          "criterion": "literature",
+          "verdict": "supported",
+          "reason": "Cites two randomized, double-blind phase 3 clinical trials demonstrating dupilumab efficacy in atopic dermatitis."
+        },
+        {
+          "symbol": "IL4R",
+          "criterion": "clinical_status",
+          "verdict": "supported",
+          "reason": "Dupilumab is approved for atopic dermatitis and selectively targets IL4R alone."
+        },
+        {
+          "symbol": "IL4R",
+          "criterion": "mechanism",
+          "verdict": "supported",
+          "reason": "Phase 3 clinical trial evidence establishes that IL-4Ra blockade inhibits type 2 inflammatory signalling in AD."
+        },
+        {
+          "symbol": "IL4R",
+          "criterion": "mechanism_statement",
+          "verdict": "supported",
+          "reason": "PMID 28478972 confirms dupilumab blocks IL-4/IL-13 signalling, improving moderate-to-severe atopic dermatitis lesions and symptoms."
+        },
+        {
+          "symbol": "JAK1",
+          "criterion": "genetic_association",
+          "verdict": "supported",
+          "reason": "Open Targets data confirms overall score 0.66 with weak genetic component (0.37) justifying score 2."
+        },
+        {
+          "symbol": "JAK1",
+          "criterion": "skin_expression",
+          "verdict": "supported",
+          "reason": "GTEx expression values of 40.2 to 48.5 TPM fall within the moderate 10-50 TPM bracket."
+        },
+        {
+          "symbol": "JAK1",
+          "criterion": "literature",
+          "verdict": "supported",
+          "reason": "Cited papers report phase 2b and phase 3 clinical trial results for abrocitinib in atopic dermatitis."
+        },
+        {
+          "symbol": "JAK1",
+          "criterion": "clinical_status",
+          "verdict": "supported",
+          "reason": "Abrocitinib is approved for atopic dermatitis and has JAK1 listed as its sole target."
+        },
+        {
+          "symbol": "JAK1",
+          "criterion": "mechanism",
+          "verdict": "supported",
+          "reason": "Phase 3 trial and review establish JAK1 inhibition dampening type 2 cytokine signalling in atopic dermatitis."
+        },
+        {
+          "symbol": "JAK1",
+          "criterion": "mechanism_statement",
+          "verdict": "supported",
+          "reason": "PMID 33761207 confirms abrocitinib selectively inhibits JAK1, reducing IL-4/IL-13 signaling and pruritus in AD patients."
+        },
+        {
+          "symbol": "IL13",
+          "criterion": "genetic_association",
+          "verdict": "supported",
+          "reason": "Open Targets data shows an overall score of 0.75 with strong genetic, literature, and clinical scores."
+        },
+        {
+          "symbol": "IL13",
+          "criterion": "skin_expression",
+          "verdict": "supported",
+          "reason": "Measured bulk skin TPM is below 1 TPM; correctly noted as uninformative for a secreted cytokine."
+        },
+        {
+          "symbol": "IL13",
+          "criterion": "literature",
+          "verdict": "supported",
+          "reason": "Cited studies report phase 3 randomized clinical trial efficacy and biomarker outcomes for lebrikizumab in AD."
+        },
+        {
+          "symbol": "IL13",
+          "criterion": "clinical_status",
+          "verdict": "supported",
+          "reason": "Both lebrikizumab and tralokinumab are approved for atopic dermatitis and target IL13 exclusively."
+        },
+        {
+          "symbol": "IL13",
+          "criterion": "mechanism",
+          "verdict": "supported",
+          "reason": "Cited studies demonstrate that selective IL-13 inhibition suppresses type 2 inflammation and improves atopic dermatitis."
+        },
+        {
+          "symbol": "IL13",
+          "criterion": "mechanism_statement",
+          "verdict": "supported",
+          "reason": "PMID 40663228 validates that lebrikizumab inhibits IL-13, significantly reducing type 2 chemokines and pruritus in AD."
+        },
+        {
+          "symbol": "IL31RA",
+          "criterion": "genetic_association",
+          "verdict": "supported",
+          "reason": "Open Targets overall score is 0.56, fitting the moderate 0.3-0.6 rubric range."
+        },
+        {
+          "symbol": "IL31RA",
+          "criterion": "skin_expression",
+          "verdict": "partial",
+          "reason": "TPM is below 1 (score 0), and skin rank 3 suggests 3; score 1 fits neither tier."
+        },
+        {
+          "symbol": "IL31RA",
+          "criterion": "literature",
+          "verdict": "supported",
+          "reason": "PMID 39067461 reports two replicate phase 3 randomized controlled trials of nemolizumab in atopic dermatitis."
+        },
+        {
+          "symbol": "IL31RA",
+          "criterion": "clinical_status",
+          "verdict": "supported",
+          "reason": "Nemolizumab is approved for atopic dermatitis and targets only IL31RA."
+        },
+        {
+          "symbol": "IL31RA",
+          "criterion": "mechanism",
+          "verdict": "supported",
+          "reason": "Cited evidence demonstrates IL-31RA-mediated pruritus signalling and human clinical efficacy upon antibody blockade."
+        },
+        {
+          "symbol": "IL31RA",
+          "criterion": "mechanism_statement",
+          "verdict": "supported",
+          "reason": "Cited abstracts support IL-31RA activation on sensory neurons causing itch and its blockade by nemolizumab."
+        },
+        {
+          "symbol": "FLG",
+          "criterion": "genetic_association",
+          "verdict": "supported",
+          "reason": "Open Targets shows overall score of 0.84 with strong genetic association and literature support."
+        },
+        {
+          "symbol": "FLG",
+          "criterion": "skin_expression",
+          "verdict": "supported",
+          "reason": "GTEx skin expression is 248-459 TPM and ranks first across all 51 tissues."
+        },
+        {
+          "symbol": "FLG",
+          "criterion": "literature",
+          "verdict": "partial",
+          "reason": "Cites only one primary human study alongside a narrative review, not meeting multiple human studies."
+        },
+        {
+          "symbol": "FLG",
+          "criterion": "clinical_status",
+          "verdict": "supported",
+          "reason": "No drugs targeting FLG have been tested or approved for atopic dermatitis in Open Targets."
+        },
+        {
+          "symbol": "FLG",
+          "criterion": "mechanism",
+          "verdict": "supported",
+          "reason": "Human loss-of-function variants directly establish that filaggrin deficiency disrupts epidermal barrier function, driving Th2 sensitization."
+        },
+        {
+          "symbol": "FLG",
+          "criterion": "mechanism_statement",
+          "verdict": "supported",
+          "reason": "PMID 16550169 confirms filaggrin loss-of-function variants disrupt epidermal barrier function, strongly predisposing to atopic dermatitis."
+        }
+      ],
+      "confidence_flags": [
+        {
+          "symbol": "FLG",
+          "reason": "Lack of clinical drugs and tractability challenges for a structural loss-of-function protein warrant low confidence."
+        }
+      ]
+    }
+  }
+}

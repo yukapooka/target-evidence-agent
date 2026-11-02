@@ -12,7 +12,7 @@ Contents:
 Rationale:
     - The path is a suggestion, not a pipeline: the LLM still chooses which tools to call and in what order.
     - The rubric text comes from rubric.py, so the prompt and the scoring rules can't drift apart.
-    - Citation ID formats are fixed here, so the critic (Day 3) can re-fetch each cited record by its ID.
+    - Citation ID formats are fixed here, so the critic can re-fetch each cited record by its ID.
     - Reviewer feedback is labelled as context, not evidence: every score still needs a tool citation.
 """
 

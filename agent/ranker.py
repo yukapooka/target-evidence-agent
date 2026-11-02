@@ -13,7 +13,7 @@ Rationale:
     - The LLM chooses the tools (via loop.run_agent); this module only sets up the run and checks the answer.
     - The answer is validated with RankingResult, and enforce_citations is applied in code before saving,
       so a saved run never contains an uncited non-zero score.
-    - Each run is saved with its model, prompt version and usage, so runs can be compared later (Day 3).
+    - Each run is saved with its model, prompt version and usage, so runs can be compared (learn.compare_runs).
     - Past reviewer decisions come from learn.summarize_feedback() and are passed as context, not evidence.
 """
 

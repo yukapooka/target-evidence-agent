@@ -49,7 +49,7 @@ def search_pubmed(query: str, max_results: int = 10) -> list[str]:
     return data["esearchresult"]["idlist"]
 
 
-# --- Step 7b: PMID existence check (used by the critic on Day 3) ---
+# --- Step 7b: PMID existence check (used by the critic) ---
 # esummary answers HTTP 200 even for fake PMIDs, but marks them with an "error" key.
 # In:  check_pmids(["26454361", "99999999999"])
 # Out: {"26454361": True, "99999999999": False}
