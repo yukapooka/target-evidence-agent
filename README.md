@@ -16,14 +16,14 @@ Starting condition: **atopic dermatitis**. The condition is an input, so other c
 ## Architecture
 
 ```mermaid
-%%{init: {"themeVariables": {"fontSize": "18px"}, "flowchart": {"htmlLabels": false}}}%%
+%%{init: {"themeVariables": {"fontSize": "16px"}, "flowchart": {"htmlLabels": false}}}%%
 flowchart TD
-    T["Tools<br/>Open Targets · GTEx skin expression · PubMed"] --> R["Ranking agent<br/>LLM chooses tools; rubric scores"]
-    R --> D["Deterministic checks<br/>citations exist and match records"]
-    D --> C["Critic agent<br/>re-fetches evidence; verdict per claim"]
+    T["Tools<br/>Open Targets · PubMed<br/>GTEx skin expression"] --> R["Ranking agent<br/>LLM chooses tools<br/>rubric scores"]
+    R --> D["Deterministic checks<br/>citations exist and<br/>match records"]
+    D --> C["Critic agent<br/>re-fetches evidence<br/>verdict per claim"]
     C --> Q["Review queue<br/>least certain first"]
     Q --> H["Scientist decisions<br/>review/decisions.json"]
-    H -->|feedback into next run| R
+    H -->|feedback into<br/>next run| R
     H -.-> E["Draft validation experiments<br/>approved targets only"]
     Q -.-> U["Review UI + SQLite store"]
 
