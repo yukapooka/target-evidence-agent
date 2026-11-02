@@ -16,7 +16,8 @@ Starting condition: **atopic dermatitis**. The condition is an input, so other c
 ## Architecture
 
 ```mermaid
-flowchart LR
+%%{init: {"themeVariables": {"fontSize": "20px"}}}%%
+flowchart TD
     T["Tools<br/>Open Targets · GTEx skin expression · PubMed"] --> R["Ranking agent<br/>LLM chooses tools; rubric scores"]
     R --> D["Deterministic checks<br/>citations exist and match records"]
     D --> C["Critic agent<br/>re-fetches evidence; verdict per claim"]
@@ -26,13 +27,13 @@ flowchart LR
     H -.-> E["Draft validation experiments<br/>approved targets only"]
     Q -.-> U["Review UI + SQLite store"]
 
-    classDef built fill:#d8f3dc,stroke:#2d6a4f;
+    classDef built stroke:#2d6a4f,stroke-width:6px;
     classDef planned stroke-dasharray: 5 5;
     class T,R,D,C,Q,H built;
     class E,U planned;
 ```
 
-Solid green = built and working. Dashed = planned, not built yet. Today, decisions are written by hand in `review/decisions.json` from the review queue printed in the terminal.
+Green outline = built and working. Dashed = planned, not built yet. Today, decisions are written by hand in `review/decisions.json` from the review queue printed in the terminal.
 
 ## Why this design
 
